@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+ <span>RegistrAPP</span>
+ <span class="example-spacer"></span>
+</mat-toolbar>
+
+<ion-content>
+  <mat-card class="conteiner">
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()" class="formularioLogin">
+      <h2>
+        Ingreso de usuario
+      </h2>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label >Nombre de usuario</mat-label>
+        <input matInput name="usuario" [(ngModel)]="user.usuario" 
+          placeholder="Ingrese su nombre de usuario"
+          required="" minlength="8">
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput name="clave" [(ngModel)]="user.clave" type="password" 
+          placeholder="Ingrese su contraseña"
+          required="" minlength="4"
+          [type]="hide ? 'password' : 'text'" >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+      </mat-form-field>
+      
+      <button mat-raised-button class="botonEnviar" color="primary" type="submit" [disabled]="formulario.invalid">Enviar</button>
+  
+    </form>
+    <br>
+    <ion-router-link (click)="nav_restClave()">Restablecer contraseña</ion-router-link>
+  </mat-card>
+
+</ion-content>
