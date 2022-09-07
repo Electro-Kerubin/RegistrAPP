@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'rest-clave',
     loadChildren: () => import('./rest-clave/rest-clave.module').then( m => m.RestClavePageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

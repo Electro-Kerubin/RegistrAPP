@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ComponentsModule,
   ],
   declarations: [HomePage]
 })

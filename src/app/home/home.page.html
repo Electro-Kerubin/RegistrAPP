@@ -3,9 +3,12 @@
   <span class="example-spacer"></span>
  </mat-toolbar>
 
-<ion-content [fullscreen]="true">
-  <h1>Bienvenido {{user}}
-    <!--comentario prueba 4-->
-  </h1>
+<app-header no-border>
+  Bienvenido {{user}}
+</app-header>
 
+<app-menu></app-menu>
+
+<ion-content [fullscreen]="true">
+  
 </ion-content>
