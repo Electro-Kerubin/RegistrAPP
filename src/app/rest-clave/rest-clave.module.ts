@@ -12,6 +12,7 @@ import { IonicModule } from '@ionic/angular';
 import { RestClavePageRoutingModule } from './rest-clave-routing.module';
 
 import { RestClavePage } from './rest-clave.page';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { RestClavePage } from './rest-clave.page';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ComponentsModule,
   ],
   declarations: [RestClavePage]
 })
