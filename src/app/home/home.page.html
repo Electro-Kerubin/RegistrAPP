@@ -5,9 +5,19 @@
 <app-menu></app-menu>
 
 <ion-content [fullscreen]="true">
+  
   <mat-card class="conteiner">
-    <h2>Bienvenido/a {{user}}</h2>
+    <mat-chip-list aria-label="Fish selection">
+      <h4>Bienvenido/a</h4> <p></p>
+      <mat-chip>
+        <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user"/>
+        {{user}}
+      </mat-chip>
+    </mat-chip-list>
+    
+    
 
   </mat-card>
+  
   
 </ion-content>

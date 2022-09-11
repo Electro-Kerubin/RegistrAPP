@@ -15,7 +15,7 @@ export class HomePage {
       params => {
         if(this.router.getCurrentNavigation().extras.state){
           this.routerState = this.router.getCurrentNavigation().extras.state;
-          localStorage.setItem('user', this.routerState.usuario);
+          localStorage.setItem('user', this.routerState.usuario.split('@')[0]);
         }
       }
     );

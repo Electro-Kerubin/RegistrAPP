@@ -8,6 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ComponentsModule } from '../components/components.module';
@@ -25,6 +26,7 @@ import { ComponentsModule } from '../components/components.module';
     MatInputModule,
     MatButtonModule,
     ComponentsModule,
+    MatChipsModule
   ],
   declarations: [HomePage]
 })
