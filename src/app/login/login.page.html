@@ -3,7 +3,7 @@
 <ion-content>
 
   <mat-card class="conteiner">
-    <form #formulario="ngForm" (ngSubmit)="onSubmit()" class="formularioLogin">
+    <form #formulario="ngForm"  class="formularioLogin">
       <h2>
         Ingreso de usuario
       </h2>
@@ -29,7 +29,7 @@
           </button>
       </mat-form-field>
       
-      <button mat-raised-button class="botonEnviar" color="primary" type="submit" [disabled]="formulario.invalid">Enviar</button>
+      <button mat-raised-button class="botonEnviar" color="primary" type="submit" [disabled]="formulario.invalid" (click)="onSubmit()">Enviar</button>
   
     </form>
     <br>
