@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,7 +16,7 @@ export class HomePage {
       params => {
         if(this.router.getCurrentNavigation().extras.state){
           this.routerState = this.router.getCurrentNavigation().extras.state;
-          localStorage.setItem('user', this.routerState.usuario);
+          localStorage.setItem('user', this.routerState.usuario.split('@')[0]);
         }
       }
     );

@@ -1,29 +1,28 @@
-<ion-menu side="end" menuId="menuMain" contentId="main">
+<ion-menu side="end" menuId="menuMain" contentId="main" class="menu_sidebar">
   <ion-header>
-    <ion-toolbar class="side-menu">
-      <ion-title></ion-title>
+    <ion-toolbar color="primary">
+      <ion-title >Menú</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item>
-        Home
-        <mat-icon>home</mat-icon>
-      </ion-item>
-      <ion-item>
-        Profile
-        <mat-icon>perm_identity</mat-icon>
-      </ion-item>
-      <ion-item>
-        Settings
-        <mat-icon>settings</mat-icon>
-      </ion-item>
+    <ion-content> 
+      <ion-list>
+        <ion-item>
+          <mat-icon>home</mat-icon>
+          Home
+        </ion-item>
+        <ion-item>
+          <mat-icon>perm_identity</mat-icon>
+          Profile
+        </ion-item>
+        <ion-item>
+          <mat-icon>settings</mat-icon>
+          Settings
+        </ion-item>
+        <ion-item>
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </ion-item>
 
-      <ion-item>
-        Logout
-        <mat-icon>exit_to_app</mat-icon>
-      </ion-item>
-
-    </ion-list>
-  </ion-content>
+      </ion-list>
+    </ion-content>
 </ion-menu>
