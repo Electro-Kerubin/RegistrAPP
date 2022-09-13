@@ -3,19 +3,51 @@
     flex: 1 1 auto;
 }
 
-.conteiner {
-    width: 100%;
-    margin-bottom: 30px;
-    max-width: 400px;
-    background-color:rgb(255, 255, 255);
-    color: black;
+.animate__animated.animate__slideInDown {
+    --animate-duration: 0.5s;
+  }
 
-}
-.mat-chip{
-    font-size: 20px;
-}
+ion-toolbar {
+    --background: transparent;
 
-.strech{
-    animation: alternate;
-    animation-duration: 1.5s ;
+    ion-title {
+        padding: 20px 0 46px 0;
+        font-weight: 900;
+        color: #1A1A1A;
+    }
+
+    p {
+        padding: 40px 0 20px 0;
+        font-weight: 500;
+    }
+
+    .back-circle {
+        z-index: -1;
+        width: 200px;
+        height: 200px;
+        background: #ECA154;
+        position: absolute;
+        border-radius: 46%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+
+        bottom: 0;
+    }
+
+    .back-rectangle{
+        z-index: -1;
+            width: auto;
+            height: 50px;
+            background: #ECA154;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            top: 0px;
+            left: 0;
+            right: 0;
+    
+            bottom: 0;
+    }
 }

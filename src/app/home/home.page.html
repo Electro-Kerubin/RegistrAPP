@@ -1,24 +1,22 @@
-<app-header no-border>
-  
-</app-header>
-<app-menu></app-menu>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="back-rectangle animate__animated animate__slideInDown"></div>
+    <div class="back-circle animate__animated animate__backOutUp"></div>
+    <ion-title class="ion-text-center custom-font">RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content [fullscreen]="true">
-  
-  <mat-card class="conteiner">
-    <mat-chip-list aria-label="Fish selection">
-      <h4>Bienvenido/a</h4> <p></p>
-      <mat-chip href="animate.min.css">
-        <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user"/>
-        {{user}}
-      </mat-chip>
-    </mat-chip-list>
-    <h1 class="animate__animated animate__bounce">An animated element</h1>
-    
-    
+<ion-content [fullscreen]="true" class="animate__animated animate__fadeIn">
+  <ion-title class="custom-font">Bienvenido/a:</ion-title>
+  <mat-chip-list aria-label="user-selection">
+    <mat-chip>
+      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
+      {{user}}
+    </mat-chip>
+  </mat-chip-list>
 
-  </mat-card>
-  
-  
 </ion-content>
