@@ -7,27 +7,23 @@
       <h2>
         Ingreso de usuario
       </h2>
-      <br>
-      <mat-form-field class="example-full-width" appearance="fill" >
-        
-        <mat-label >Nombre de usuario</mat-label>
-        
-        <input matInput name="usuario" [(ngModel)]="user.usuario" 
-          placeholder="Ingrese su nombre de usuario"
-          required="" minlength="8">
-          
-      </mat-form-field>
-      
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input matInput name="clave" [(ngModel)]="user.clave" type="password" 
-          placeholder="Ingrese su contraseña"
-          required="" minlength="4"
-          [type]="hide ? 'password' : 'text'" >
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-      </mat-form-field>
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill" >
+          <mat-label > <mat-icon matSuffix>perm_identity</mat-icon> Nombre de usuario</mat-label>
+          <input matInput name="usuario" [(ngModel)]="user.usuario" 
+            placeholder="Ingrese su nombre de usuario"
+            required="" minlength="8">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label> <mat-icon matSuffix>lock</mat-icon> Contraseña</mat-label>
+          <input matInput name="clave" [(ngModel)]="user.clave" type="password" 
+            placeholder="Ingrese su contraseña"
+            required="" minlength="4"
+            [type]="hide ? 'password' : 'text'" >
+        </mat-form-field>
+      </p>
       
       <button mat-raised-button class="botonEnviar" color="primary" type="submit" [disabled]="formulario.invalid" (click)="onSubmit()">Enviar</button>
   
