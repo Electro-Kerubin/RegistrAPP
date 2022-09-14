@@ -70,14 +70,15 @@ ion-content {
         left: -50%;
         top: 0;
     }
-    .card{
-        border-radius: 10%;
-        margin-top: 30px;
-        background: linear-gradient(to right, rgb(197, 198, 225), rgba(255, 122, 89,0));
-        width: 400px;
-        height: 400px;
-        
+    .blob_right {
+        z-index: -1;
+        height: 450px;
+        width: 600px;
+        position: absolute;
+        right: -50%;
+        top: 130px;
     }
+    
     .select_buttons{
         margin-left:15px ;
         margin-top: 50px;
@@ -93,7 +94,5 @@ ion-content {
 .home_content{
     margin-top: 10px;
     margin-left: 10px;
-    
-    
 
 }
