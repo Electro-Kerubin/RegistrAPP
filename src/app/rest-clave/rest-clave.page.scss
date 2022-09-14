@@ -1,17 +1,75 @@
+.custom-font {
+    font-family: 'Josefin Sans', sans-serif;
+}
+//toolbar
 .example-spacer {
     flex: 1 1 auto;
   }
 
-.conteiner {
-    width: 100%;
-    margin-bottom: 30px;
-    max-width: 400px;
-    background-color:rgb(255, 255, 255);
-    color: black;
+ion-toolbar {
+    --background: transparent;
 
+    ion-title {
+        padding: 20px 0 46px 0;
+        font-weight: 900;
+        color: #1A1A1A;
+    }
+
+    p {
+        padding: 40px 0 20px 0;
+        font-weight: 500;
+    }
+
+    .back-circle {
+        z-index: -1;
+        width: 200px;
+        height: 200px;
+        background: #ECA154;
+        position: absolute;
+        border-radius: 46%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
-.example-full-width {
-    width: 100%;
-    color: black;
+
+ion-content {
+    
+    .blob-center {
+        z-index: -1;
+        height: 500px;
+        width: 548px;
+        position: absolute;
+        left: -50%;
+        top: 0;
+    }
+
+    ion-card {
+        width: 100%;
+        background-color: #ECA154;
+        border-radius: 14px;
+        margin-top: 50px;
+    }
+
     
 }
+
+// .example-spacer {
+//     flex: 1 1 auto;
+//   }
+
+// .conteiner {
+//     width: 100%;
+//     margin-bottom: 30px;
+//     max-width: 400px;
+//     background-color:rgb(255, 255, 255);
+//     color: black;
+
+// }
+// .example-full-width {
+//     width: 100%;
+//     color: black;
+    
+// }
