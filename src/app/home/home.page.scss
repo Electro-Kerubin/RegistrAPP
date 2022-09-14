@@ -2,10 +2,19 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+.custom-font {
+    font-family: 'Josefin Sans', sans-serif;
+}
 
-.animate__animated.animate__slideInDown {
-    --animate-duration: 0.5s;
-  }
+.animate__animated {
+    .animate__slideInDown {
+        --animate-duration: 0.5s;
+    }
+    .animate__slideOutLeft{
+        --animate-duration: 3s;
+    }
+}
+
 
 ion-toolbar {
     --background: transparent;
@@ -39,7 +48,7 @@ ion-toolbar {
     .back-rectangle{
         z-index: -1;
             width: auto;
-            height: 50px;
+            height: 60px;
             background: #ECA154;
             position: absolute;
             margin-left: auto;
@@ -50,4 +59,41 @@ ion-toolbar {
     
             bottom: 0;
     }
+}
+
+ion-content {
+    .blob-center {
+        z-index: -1;
+        height: 500px;
+        width: 548px;
+        position: absolute;
+        left: -50%;
+        top: 0;
+    }
+    .card{
+        border-radius: 10%;
+        margin-top: 30px;
+        background: linear-gradient(to right, rgb(230, 231, 255), rgba(255, 122, 89,0));
+        width: 400px;
+        height: 400px;
+        
+    }
+    .select_buttons{
+        margin-left:15px ;
+        margin-top: 50px;
+        width: 100px;
+        height: 150px;
+        border-radius: 5%;
+
+        
+    }
+
+}
+
+.home_content{
+    margin-top: 10px;
+    margin-left: 10px;
+    
+    
+
 }
