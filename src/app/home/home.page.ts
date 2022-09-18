@@ -26,4 +26,8 @@ export class HomePage {
     this.user = localStorage.getItem('user');
   }
 
+  profile(){
+    this.router.navigate(['/profile']);
+  }
+
 }

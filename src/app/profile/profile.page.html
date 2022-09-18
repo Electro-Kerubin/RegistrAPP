@@ -1,8 +1,27 @@
-<ion-header>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <div class="back-rectangle"></div>
+    <ion-title class="ion-text-center custom-font">Perfil</ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menuMain" color="light"></ion-menu-button>
+    </ion-buttons>
+    
+
+    
+
   </ion-toolbar>
+  <div >
+    <img matChipAvatar class="picture" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
+  </div>
 </ion-header>
+
+<app-menu></app-menu>
+
 
 <ion-content>
 
