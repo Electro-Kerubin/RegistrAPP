@@ -13,6 +13,32 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'rest-clave',
+    redirectTo: 'rest-clave',
+    pathMatch: 'full'
+  },
+  {
+    path: 'profile',
+    redirectTo: 'profile',
+    pathMatch: 'full'
+  },
+  //esta ruta de 404 siempre debe ser la ultima
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -23,6 +49,11 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'e404',
+    loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule)
+  },
+
 
 ];
 
