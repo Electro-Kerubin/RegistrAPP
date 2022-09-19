@@ -10,8 +10,8 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   user = {
-    usuario: '',
-    clave: '',
+    usuario: null,
+    clave: null,
   };
 
   hide = true;
@@ -34,23 +34,42 @@ export class LoginPage implements OnInit {
 
   async toastLoginFail() {
     const toast = await this.toastController.create({
-      message: 'Hubo un problema al iniciar sesión.',
+      message: 'Ingrese corectamente sus datos',
       duration: 2000
     });
+    toast.present();
   }
 
-  onSubmit() {
-    const navegationExtras: NavigationExtras = {
-      state: this.user,
+  onSubmit(){
+    
+    if (this.user.usuario == null || this.user.clave == null) {
+      this.toastLoginFail();
+      this.user = {
+        usuario: null,
+        clave: null,
+      };
+      return;
       
+    }
+    const navegationExtras: NavigationExtras = {
+      state: this.user
     };
     this.router.navigate(['/home'], navegationExtras);
-    this.toastLoginSuccess();
-    console.log(this.user)
+    this.toastLoginSuccess()
   }
 
-  nav_restClave(){
-    this.router.navigate(['/rest-clave']);
-  }
+  // onSubmit() {
+  //   const navegationExtras: NavigationExtras = {
+  //     state: this.user,
+      
+  //   };
+  //   this.router.navigate(['/home'], navegationExtras);
+  //   this.toastLoginSuccess();
+  //   console.log(this.user)
+  // }
+
+  // nav_restClave(){
+  //   this.router.navigate(['/rest-clave']);
+  // }
 
 }
