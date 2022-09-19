@@ -17,26 +17,25 @@
 
   <div class="">
 
-    <form #formulario="ngForm" class="formularioLogin" action="">
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()" class="formularioLogin" action="">
       <!--asdfadsf-->
       <h2 class="custom-font">Ingreso de usuario</h2>
       <br>
       <div class="login-container">
-        <input matInput [(ngModel)]="user.usuario" class="input" type="email" name="user-email" placeholder="Correo"
-          required="" minlength="8">
+        <input matInput [(ngModel)]="user.usuario" class="input" type="email" name="user-email" placeholder="Correo">
       </div>
 
       <div class="login-container">
 
         <input matInput [(ngModel)]="user.clave" class="input" type="password" name="user-password"
-          placeholder="Contraseña" required="" minlength="4" [type]="hide ? 'password' : 'text'">
+          placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
       </div>
       <p>
         <mat-checkbox (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="custom-font">Mostrar constraseña</mat-checkbox>
       </p>
 
       <div class="form-btn-container">
-        <button mat-raised-button class="form-btn custom-font" [disabled]="formulario.invalid" (click)="onSubmit()">
+        <button mat-raised-button class="form-btn custom-font" [disabled]="formulario.invalid" type="submit">
           Iniciar
         </button>
       </div>

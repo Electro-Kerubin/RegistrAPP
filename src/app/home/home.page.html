@@ -6,11 +6,11 @@
   <ion-toolbar>
     <div class="back-rectangle animate__animated animate__slideInDown"></div>
     <div class="back-circle animate__animated animate__slideOutUp"></div>
-    <ion-title class="ion-text-center custom-font">RegistrAPP </ion-title>
-    <ion-buttons slot="end">
+    <ion-title class="ion-text-center custom-font">RegistrAPP</ion-title>
+    <ion-buttons color="light" slot="end">
       <ion-menu-button menu="menuMain" color="light"></ion-menu-button>
     </ion-buttons>
-
+    
   </ion-toolbar>
 </ion-header>
 <app-menu></app-menu>
@@ -25,7 +25,7 @@
   <div class="home_content animate__animated animate__fadeIn">
     <h1 class="custom-font">Bienvenido/a:</h1>
     <mat-chip-list aria-label="user-selection">
-      <mat-chip>
+      <mat-chip routerLink="/profile">
         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
         {{user}}
       </mat-chip>

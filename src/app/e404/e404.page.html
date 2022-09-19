@@ -1,28 +1,22 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
   rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <div class="back-rectangle"></div>
-    <ion-title class="ion-text-center custom-font">Perfil</ion-title>
-    
+    <ion-title class="ion-text-center custom-font">Página no encontrada</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button menu="menuMain" color="light"></ion-menu-button>
     </ion-buttons>
-    
-
-    
 
   </ion-toolbar>
-  <div >
-    <img matChipAvatar class="picture" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
-  </div>
 </ion-header>
 
-<app-menu></app-menu>
+<ion-content class="ion_padding">
+  <ion-img src="assets/images/e404.svg"></ion-img>
 
-
-<ion-content>
-
+  <button mat-raised-button routerLink="/login" class="form-btn custom-font" expand="block" (click)="login()">
+    
+    Volver a Iniciar Sesión
+    <mat-icon>home</mat-icon>
+  </button>
 </ion-content>
