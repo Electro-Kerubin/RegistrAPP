@@ -69,8 +69,8 @@ export class LoginPage implements OnInit {
   //   console.log(this.user)
   // }
 
-  // nav_restClave(){
-  //   this.router.navigate(['/rest-clave']);
-  // }
+  nav_restClave(){
+  this.router.navigate(['/rest-clave']);
+  }
 
 }
