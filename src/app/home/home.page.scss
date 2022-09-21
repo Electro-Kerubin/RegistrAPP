@@ -2,9 +2,6 @@
 .example-spacer {
     flex: 1 1 auto;
 }
-.custom-font {
-    font-family: 'Josefin Sans', sans-serif;
-}
 
 .animate__animated {
     .animate__slideInDown {
@@ -62,21 +59,13 @@ ion-toolbar {
 }
 
 ion-content {
+    
     .blob-center {
         z-index: -1;
-        height: 500px;
-        width: 548px;
+        height: 100%;
+        width: 100%;
         position: absolute;
-        left: -50%;
-        top: 0;
-    }
-    .blob_right {
-        z-index: -1;
-        height: 450px;
-        width: 600px;
-        position: absolute;
-        right: -50%;
-        top: 130px;
+        top: 0px;
     }
     
     .select_buttons{
@@ -96,3 +85,5 @@ ion-content {
     margin-left: 10px;
 
 }
+
+

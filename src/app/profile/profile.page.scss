@@ -41,6 +41,22 @@ ion-toolbar {
     left: 0;
     right: 0;
 
-    top: 20px;
+    top: 50%;
     
 }
+.card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .user{
+        width: 100px;
+        height: 100px;
+      }
+      
+      .header-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+      }
+  }
+  

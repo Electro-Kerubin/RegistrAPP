@@ -11,7 +11,7 @@ export class LoginPage implements OnInit {
 
   user = {
     usuario: null,
-    clave: null,
+    clave: null
   };
 
   hide = true;
@@ -46,8 +46,9 @@ export class LoginPage implements OnInit {
       this.toastLoginFail();
       this.user = {
         usuario: null,
-        clave: null,
+        clave: null
       };
+
       return;
       
     }

@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
 
     }
     //redirect login
-    alert('no tienes permiso');
-    return false;
+    //alert('no tienes permiso');
+    return true;
   }
   hasUser():boolean{
     return false;

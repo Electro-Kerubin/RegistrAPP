@@ -26,7 +26,7 @@ import { ComponentsModule } from '../components/components.module';
     MatInputModule,
     MatButtonModule,
     ComponentsModule,
-    MatChipsModule,
+    MatChipsModule
   ],
   declarations: [HomePage]
 })

@@ -6,23 +6,30 @@
   <ion-toolbar>
     <div class="back-rectangle"></div>
     <ion-title class="ion-text-center custom-font">Perfil</ion-title>
-    
     <ion-buttons slot="end">
       <ion-menu-button menu="menuMain" color="light"></ion-menu-button>
     </ion-buttons>
-    
-
-    
-
   </ion-toolbar>
-  <div >
-    <img matChipAvatar class="picture" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
-  </div>
 </ion-header>
 
 <app-menu></app-menu>
 
 
 <ion-content>
-
+  <mat-card class="card custom-font">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>{{user}}</mat-card-title>
+      <mat-card-subtitle>{{user}}@duocuc.cl</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Descripción del perfil
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="btn custom-font">Editar</button>
+      <button mat-raised-button class="btn custom-font" routerLink="/home">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
 </ion-content>
