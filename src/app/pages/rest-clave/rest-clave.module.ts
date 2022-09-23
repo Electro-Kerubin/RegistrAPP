@@ -6,29 +6,27 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { RestClavePageRoutingModule } from './rest-clave-routing.module';
 
-import { LoginPage } from './login.page';
-import { ComponentsModule } from '../components/components.module';
+import { RestClavePage } from './rest-clave.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    RestClavePageRoutingModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
     ComponentsModule,
-    MatCheckboxModule
   ],
-  declarations: [LoginPage]
+  declarations: [RestClavePage]
 })
-export class LoginPageModule {}
+export class RestClavePageModule {}

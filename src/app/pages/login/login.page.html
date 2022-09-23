@@ -22,13 +22,14 @@
       <h2 class="custom-font">Ingreso de usuario</h2>
       <br>
       <div class="login-container">
-        <input matInput [(ngModel)]="user.usuario" class="input" type="email" name="user-email" placeholder="Correo">
+        <input matInput [(ngModel)]="user.usuario" class="input" type="email" name="user-email" placeholder="Correo" 
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required="">
       </div>
 
       <div class="login-container">
 
         <input matInput [(ngModel)]="user.clave" class="input" type="password" name="user-password"
-          placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+          placeholder="Contraseña" [type]="hide ? 'password' : 'text'" minlength="4" required="">
       </div>
       <p>
         <mat-checkbox (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="custom-font">Mostrar constraseña</mat-checkbox>

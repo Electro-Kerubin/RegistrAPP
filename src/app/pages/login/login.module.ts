@@ -6,28 +6,29 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MatChipsModule} from '@angular/material/chips';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { ProfilePage } from './profile.page';
-import { ComponentsModule } from '../components/components.module';
+import { LoginPage } from './login.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
-    ComponentsModule,
+    LoginPageRoutingModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ComponentsModule,
+    MatCheckboxModule
   ],
-  declarations: [ProfilePage]
+  declarations: [LoginPage]
 })
-export class ProfilePageModule {}
+export class LoginPageModule {}
