@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
 
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,7 +20,7 @@ import { ComponentsModule } from './components/components.module';
     BrowserAnimationsModule,
     ComponentsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
