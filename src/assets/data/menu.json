@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Home",
+        "url": "/home",
+        "icon": "home"
+    },
+    {
+        "title": "Logout",
+        "url": "/login",
+        "icon": "exit_to_app"
+    }
+]

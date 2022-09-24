@@ -8,7 +8,15 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <p>
+
+      <ion-menu-toggle *ngFor="let i of menuItems | async">
+        <ion-item class="clickable" [routerLink]="i.url" button>
+          <mat-icon>{{ i.icon }}</mat-icon>
+          {{ i.title }}
+        </ion-item>
+      </ion-menu-toggle>
+
+      <!-- <p>
         <button mat-button>
           <mat-icon>home</mat-icon>
           Home
@@ -31,7 +39,7 @@
           <mat-icon>exit_to_app</mat-icon>
           Logout
         </button>
-      </p>
+      </p> -->
     </ion-list>
   </ion-content>
 </ion-menu>
