@@ -10,7 +10,7 @@
     <ion-buttons color="light" slot="end">
       <ion-menu-button menu="menuMain" color="light"></ion-menu-button>
     </ion-buttons>
-    
+
   </ion-toolbar>
 </ion-header>
 <app-menu></app-menu>
@@ -24,18 +24,15 @@
         {{user}}
       </mat-chip>
     </mat-chip-list>
-  
-      <h2 class="custom-font">Seleccione una opción</h2>
-      <button mat-stroked-button class="btn custom-font">
-        <p>
-          Leer QR
-        </p>
-      </button>
-      <button mat-stroked-button class="btn custom-font">
-        <p>
-          Asistencia
-        </p>
-      </button>
+    <h2 class="custom-font">Seleccione una opción</h2>
+    <button mat-stroked-button class="boton custom-font">
+      <ion-img class="img" src="assets/images/QR_code.svg"></ion-img>
+      Leer QR
+    </button>
+    <button mat-stroked-button class="boton custom-font">
+      <ion-img class=img src="assets/images/Checklist.svg"></ion-img>
+      Asistencia
+    </button>
   </div>
   <div class="blob-center">
     <ion-img src="assets/images/Background.svg"></ion-img>

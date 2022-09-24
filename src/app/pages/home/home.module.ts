@@ -1,32 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { HomePage } from './home.page';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
 
-import { IonicModule } from '@ionic/angular';
+import { HomePageRoutingModule } from './home-routing.module';
+import { ComponentsModule } from '../../components/components.module';
 
-import { RestClavePageRoutingModule } from './rest-clave-routing.module';
-
-import { RestClavePage } from './rest-clave.page';
-import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RestClavePageRoutingModule,
+    HomePageRoutingModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
     ComponentsModule,
+    MatChipsModule
   ],
-  declarations: [RestClavePage]
+  declarations: [HomePage]
 })
-export class RestClavePageModule {}
+export class HomePageModule {}

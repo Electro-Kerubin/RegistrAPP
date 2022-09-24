@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,16 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   user = {
-    usuario: null,
-    clave: null
+    usuario: '',
+    clave: ''
   };
 
   hide = true;
 
   constructor(
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private dbService :DbService
     ) { }
 
   ngOnInit() {
@@ -40,34 +42,15 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  onSubmit(){
-    
-    if (this.user.usuario == null || this.user.clave == null) {
-      this.toastLoginFail();
-      this.user = {
-        usuario: null,
-        clave: null
-      };
-
-      return;
+  onSubmit() {
+  const navegationExtras: NavigationExtras = {
+  state: this.user,
       
-    }
-    const navegationExtras: NavigationExtras = {
-      state: this.user
-    };
-    this.router.navigate(['/home'], navegationExtras);
-    this.toastLoginSuccess()
+  };
+  this.router.navigate(['/home'], navegationExtras);
+  this.toastLoginSuccess();
+  console.log(this.user)
   }
-
-  // onSubmit() {
-  //   const navegationExtras: NavigationExtras = {
-  //     state: this.user,
-      
-  //   };
-  //   this.router.navigate(['/home'], navegationExtras);
-  //   this.toastLoginSuccess();
-  //   console.log(this.user)
-  // }
 
   nav_restClave(){
   this.router.navigate(['/rest-clave']);
