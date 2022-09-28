@@ -9,11 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
 
-<<<<<<< HEAD
+
 import { HttpClientModule } from '@angular/common/http';
-=======
 import { SQLite } from '@ionic-native/sqlite/ngx';
->>>>>>> b55ebd86f7719644651945361dec8ccf76febd31
 
 @NgModule({
   declarations: [AppComponent],
