@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 import { ToastController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
@@ -20,8 +21,11 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private dbService :DbService
-    ) { }
+    private dbService: DbService,
+    private sqlite: SQLite,
+    ) {
+      
+    }
 
   ngOnInit() {
   }
