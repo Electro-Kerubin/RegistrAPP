@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { SQLite } from '@ionic-native/sqlite/ngx';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { ToastController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
@@ -21,11 +21,24 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private dbService: DbService,
     private sqlite: SQLite,
     ) {
-      
+      this.sqlite.create({
+        name: 'datos.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+        db.executeSql('CREATE TABLE IF NOT EXISTS USUARIO(MAIL VARCHAR(75), CONTRASEÑA VARCHAR(30))',
+        []).then(() => {
+          console.log('FSR: TABLA CREADA OK');
+        }).catch(e => {
+          console.log('FSR: TABLA NOK');
+        })
+      }).catch(e => {
+        console.log('FSR: BASE DE DATOS NOK');
+      })
     }
+
+
 
   ngOnInit() {
   }
