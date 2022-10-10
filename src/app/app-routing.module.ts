@@ -30,6 +30,11 @@ const routes: Routes = [
     redirectTo: 'profile',
     pathMatch: 'full'
   },
+  {
+    path: 'agregar-usuario',
+    redirectTo: 'agregar-usuario',
+    pathMatch: 'full'
+  },
   //esta ruta de 404 siempre debe ser la ultima
   {
     path: '**',
@@ -57,6 +62,11 @@ const routes: Routes = [
     path: 'e404',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
+  {
+    path: 'agregar-usuario',
+    loadChildren: () => import('./pages/agregar-usuario/agregar-usuario.module').then( m => m.AgregarUsuarioPageModule)
+  },
+
 
 
 

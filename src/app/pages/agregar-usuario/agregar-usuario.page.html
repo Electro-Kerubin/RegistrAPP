@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+      <ion-input type="text" placeholder="run" [(ngModel)]="run"></ion-input>
+      <ion-input type="text" placeholder="nombre" [(ngModel)]="nombre"></ion-input>
+      <ion-input type="email" placeholder="correo" [(ngModel)]="correo"></ion-input>
+      <ion-input type="text" placeholder="contraseña" [(ngModel)]="contrasena"></ion-input>
+      <ion-button shape="block" (click)="guardar()">Guardar</ion-button>
+
+  </ion-card>
+</ion-content>

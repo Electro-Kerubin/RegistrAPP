@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite/ngx';
@@ -22,10 +23,10 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
     BrowserAnimationsModule,
     ComponentsModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SQLite
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite
   ],
   bootstrap: [
     AppComponent
