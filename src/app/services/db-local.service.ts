@@ -24,6 +24,29 @@ export class DbLocalService {
     this._storage = storage;
   }
 
+  async verificarUser(correo: string, pass: string):Promise<boolean> {
+    const users = await this.storage.get('usuario')
+    for(let i = 0; i < users.length; i++){
+
+      if(correo == users[i].correo){
+
+        if(pass == users[i].contrasena) {
+          return true
+
+        } else {
+          return false
+        }
+
+      } else {
+        return false
+      }
+
+      // console.log(users[i].run);
+      // console.log(correo);
+    }
+  }
+
+  //-----------------------
   async getUsuarios() {
     const usuarioExiste = await this.storage.get('usuario');
     if(usuarioExiste) {

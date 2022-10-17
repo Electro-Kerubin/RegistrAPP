@@ -10,6 +10,8 @@ import { DbLocalService } from 'src/app/services/db-local.service';
 })
 export class LoginPage implements OnInit {
 
+  listUsuarios = [];
+
   run: number;
   nombre: string;
   correo: string;
@@ -22,17 +24,22 @@ export class LoginPage implements OnInit {
 
   hide = true;
 
+
   constructor(
     private router: Router,
     private toastController: ToastController,
     public dblocalservice: DbLocalService,
-    ) { }
+    ) {
 
+     }
 
 
   ngOnInit() {
   }
   
+
+
+  // -------------
 
   async toastLoginSuccess() {
     const toast = await this.toastController.create({
@@ -50,14 +57,25 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  onSubmit() {
-  const navegationExtras: NavigationExtras = {
-  state: this.user,
-      
-  };
-  this.router.navigate(['/home'], navegationExtras);
-  this.toastLoginSuccess();
-  console.log(this.user)
+  async onSubmit() {
+
+    const var2 = await this.dblocalservice.verificarUser(this.user.usuario, this.user.clave);
+    
+    if(var2 == true) {
+      const navegationExtras: NavigationExtras = {
+        state: this.user,
+        };
+        this.router.navigate(['/home'], navegationExtras);
+        this.toastLoginSuccess();
+    } else {
+      const toast = await this.toastController.create({
+        message: 'No se pudo iniciar sesión',
+        duration: 2000
+      });
+      toast.present();
+    }
+
+
   }
 
   nav_restClave(){
