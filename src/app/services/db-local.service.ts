@@ -38,12 +38,14 @@ export class DbLocalService {
         }
 
       } else {
-        return false
+        continue
       }
 
       // console.log(users[i].run);
       // console.log(correo);
     }
+
+    return false
   }
 
   //-----------------------
