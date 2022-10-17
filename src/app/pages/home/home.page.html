@@ -25,8 +25,9 @@
       </mat-chip>
     </mat-chip-list>
     <h2 class="custom-font">Seleccione una opción</h2>
-    <button mat-stroked-button class="boton custom-font">
+    <button mat-stroked-button class="boton custom-font" (click)="takePicture()">
       <ion-img class="img" src="assets/images/QR_code.svg"></ion-img>
+      <img *ngIf="image" [src]="image" alt="image">
       Leer QR
     </button>
     <button mat-stroked-button class="boton custom-font">

@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import {Camera} from '@ionic-native/camera/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
@@ -18,14 +18,14 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
   declarations: [AppComponent],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
-    BrowserAnimationsModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
   ],
   providers: [
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite
   ],
   bootstrap: [

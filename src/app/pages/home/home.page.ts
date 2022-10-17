@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 
 @Component({
@@ -8,12 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  image: string;
   showFiller = false;
 
   routerState: any;
   user: string;
 
-  constructor(private router: Router, private activeroute: ActivatedRoute) {
+  constructor(private router: Router, private activeroute: ActivatedRoute, private camera:Camera) {
     this.activeroute.queryParams.subscribe(
       params => {
         if(this.router.getCurrentNavigation().extras.state){
@@ -22,6 +24,22 @@ export class HomePage {
         }
       }
     );
+  }
+
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    };
+    this.camera.getPicture(options)
+    .then((imageData) => {
+      this.image = 'data:image/jpeg;base64,'+imageData;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   ngOnInit(){
