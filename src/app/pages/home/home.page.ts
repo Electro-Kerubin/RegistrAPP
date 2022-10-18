@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,17 @@ export class HomePage {
   showFiller = false;
 
   routerState: any;
-  user: string;
+  user = {
+    nom: ''
+  }
 
-  constructor(private router: Router, private activeroute: ActivatedRoute, private camera:Camera) {
+  code: any;
+
+  constructor(private router: Router, 
+              private activeroute: ActivatedRoute,
+              private camera:Camera, 
+              private barcodeScanner: BarcodeScanner,
+              private storage: Storage, ) {
     this.activeroute.queryParams.subscribe(
       params => {
         if(this.router.getCurrentNavigation().extras.state){
@@ -26,6 +35,17 @@ export class HomePage {
     );
   }
 
+  //----------- Rodrigo Scan ---------//
+  scan() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.code = barcodeData.text;
+      console.log('Barcode data', this.code);
+     }).catch(err => {
+         console.log('Error', err);
+     });
+  }
+
+  //------- el otro scan --------//
   takePicture() {
     const options: CameraOptions = {
       quality: 100,
@@ -42,8 +62,8 @@ export class HomePage {
     });
   }
 
-  ngOnInit(){
-    this.user = localStorage.getItem('user');
+  async ngOnInit(){
+      this.user.nom = await localStorage.getItem('user');
   }
 
 }

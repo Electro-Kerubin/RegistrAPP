@@ -7,7 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {routerState: any;
-  user: string;
+  user = {
+    nom: '',
+    correo: ''
+  }
 
   constructor(private router: Router, private activeroute: ActivatedRoute) {
     this.activeroute.queryParams.subscribe(
@@ -21,7 +24,8 @@ export class ProfilePage implements OnInit {routerState: any;
   }
 
   ngOnInit(){
-    this.user = localStorage.getItem('user');
+    this.user.nom = localStorage.getItem('user');
+    this.user.correo = localStorage.getItem('userCorreo');
   }
 
 }

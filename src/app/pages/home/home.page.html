@@ -21,11 +21,11 @@
     <mat-chip-list aria-label="user-selection">
       <mat-chip class="btn" routerLink="/profile">
         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
-        {{user}}
+        {{user.nom}}
       </mat-chip>
     </mat-chip-list>
     <h2 class="custom-font">Seleccione una opción</h2>
-    <button mat-stroked-button class="boton custom-font" (click)="takePicture()">
+    <button mat-stroked-button class="boton custom-font" (click)="scan()">
       <ion-img class="img" src="assets/images/QR_code.svg"></ion-img>
       <img *ngIf="image" [src]="image" alt="image">
       Leer QR

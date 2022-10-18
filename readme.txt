@@ -4,4 +4,7 @@ npm install
 ionic cap run android
 ionic cap run android --livereload --external
 ionic cap sync -> www
+ionic cap sync android
+
+npx cap sync android
 npx cap open android -> abre con android studio

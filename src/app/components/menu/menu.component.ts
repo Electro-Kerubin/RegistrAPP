@@ -18,4 +18,8 @@ export class MenuComponent implements OnInit {
     this.menuItems = this.dataServices.getMenuOpts();
   }
 
+  logout() {
+    localStorage.setItem('guard', 'false');
+  }
+
 }
