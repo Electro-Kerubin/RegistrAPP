@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { DbLocalService } from 'src/app/services/db-local.service';
+import { ApiService } from 'src/app/services/api.service';
+import { NgForm } from '@angular/forms';
+import { Storage } from '@ionic/storage-angular';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +14,7 @@ import { DbLocalService } from 'src/app/services/db-local.service';
 })
 export class LoginPage implements OnInit {
 
-  listUsuarios = [];
-
-  run: number;
-  nombre: string;
-  correo: string;
-  contrasena: string;
+  usuario: Usuario;
 
   user = {
     usuario: '',
@@ -30,13 +29,35 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     public dblocalservice: DbLocalService,
     public navCtrl: NavController,
-    ) {
+    private api: ApiService,
+    private storage: Storage,
+    ) {}
+  
+  //-------api--------
+    
+  async login(formLogin: NgForm) {
 
-     }
+    if(formLogin.invalid) {
+      return;
+    }
 
+    const usuarioValido = await this.api.login(this.user.usuario, this.user.clave);
+
+    if(usuarioValido) {
+      await this.storage.set('user', this.user.usuario);
+      this.navCtrl.navigateRoot('/home', {animated: true});
+      localStorage.setItem('guard', 'true');
+    } else{
+      this.toastLoginFail();
+    }
+  }
+
+
+
+  //-------------------
 
   ngOnInit() {
-    localStorage.setItem('guardLogin', 'false');
+    //localStorage.setItem('guardLogin', 'false');
   }
   
 
@@ -59,38 +80,35 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  async onSubmit() {
+  // async onSubmit() {
+
+    
 
 
+  //    const usuario = await this.dblocalservice.verificarUser(this.user.usuario, this.user.clave);
+  //    const infoUsuario = await this.dblocalservice.getUsuario(this.user.usuario, this.user.clave);
 
-     const usuario = await this.dblocalservice.verificarUser(this.user.usuario, this.user.clave);
-     const infoUsuario = await this.dblocalservice.getUsuario(this.user.usuario, this.user.clave);
+  //    if(usuario == true) {
+  //      const navegationExtras: NavigationExtras = {
+  //        state: this.user,
+  //        };
+  //       //  this.router.navigate(['/home'], navegationExtras);
+  //        this.navCtrl.navigateRoot('home');
+  //        this.toastLoginSuccess();
+  //        localStorage.setItem('guard', 'true');
+  //        localStorage.setItem('user', infoUsuario.primerNombre);
+  //        localStorage.setItem('userCorreo', infoUsuario.correo);
 
-     if(usuario == true) {
-       const navegationExtras: NavigationExtras = {
-         state: this.user,
-         };
-        //  this.router.navigate(['/home'], navegationExtras);
-         this.navCtrl.navigateRoot('home');
-         this.toastLoginSuccess();
-         localStorage.setItem('guard', 'true');
-         localStorage.setItem('user', infoUsuario.nombre);
-         localStorage.setItem('userCorreo', infoUsuario.correo);
-
-     } else {
-       const toast = await this.toastController.create({
-         message: 'No se pudo iniciar sesión',
-         duration: 2000
-       });
-       toast.present();
-     }
+  //    } else {
+  //      const toast = await this.toastController.create({
+  //        message: 'No se pudo iniciar sesión',
+  //        duration: 2000
+  //      });
+  //      toast.present();
+  //    }
 
 
-  }
-
-  nav_restClave(){
-  
-  }
+  // }
 
 
 }

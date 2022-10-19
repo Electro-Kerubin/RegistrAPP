@@ -20,8 +20,8 @@ export class AgregarUsuarioPage implements OnInit {
   ngOnInit() {
   }
 
-  guardar() {
-    this.dblocalservice.saveUsuario(this.run, this.nombre, this.correo, this.contrasena);
-  }
+  // guardar() {
+  //   this.dblocalservice.saveUsuario(this.run, this.nombre, this.correo, this.contrasena);
+  // }
 
 }

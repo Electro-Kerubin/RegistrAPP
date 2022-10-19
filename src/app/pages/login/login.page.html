@@ -17,7 +17,7 @@
 
   <div class="">
 
-    <form #formulario="ngForm" (ngSubmit)="onSubmit()" class="formularioLogin" action="">
+    <form (ngSubmit)="login(formLogin)" #formLogin="ngForm" class="formularioLogin" action="">
       <!--asdfadsf-->
       <h2 class="custom-font">Ingreso de usuario</h2>
       <br>
@@ -29,14 +29,14 @@
       <div class="login-container">
 
         <input matInput [(ngModel)]="user.clave" class="input" type="password" name="user-password"
-          placeholder="Contraseña" [type]="hide ? 'password' : 'text'" minlength="4" required="">
+          placeholder="Contraseña" [type]="hide ? 'password' : 'text'"  required="">
       </div>
       <p>
         <mat-checkbox (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="custom-font">Mostrar constraseña</mat-checkbox>
       </p>
 
       <div class="form-btn-container">
-        <button mat-raised-button class="form-btn custom-font" [disabled]="formulario.invalid" type="submit">
+        <button mat-raised-button class="form-btn custom-font" type="submit">
           Iniciar
         </button>
       </div>

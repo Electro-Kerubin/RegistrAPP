@@ -1,6 +1,11 @@
 export interface Usuario {
-    run: number;
-    nombre: string;
-    correo: string;
-    contrasena: string;
+    id?: number,
+    run?: string,
+    dv?: string,
+    primerNombre?: string,
+    segundoNombre?: string,
+    paternoApellido?: string,
+    maternoApellido?: string,
+    correo?: string,
+    contraseña?: string
 }

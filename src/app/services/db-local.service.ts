@@ -66,16 +66,16 @@ export class DbLocalService {
     }
   }
 
-  saveUsuario(run: number, nombre: string, correo: string, contrasena: string) {
-    const existe = this.usuario.find(c => c.run == run);
-    if(!existe) {
-      this.usuario.unshift({run: run, nombre: nombre, correo: correo, contrasena: contrasena})
-      this._storage.set('usuario', this.usuario);
-      this.presentToast("usuario agregado con exito!!")
-    } else {
-      this.presentToast("error: usuario ya existe!!!")
-    }
-  }
+  // saveUsuario(run: string, nombre: string, correo: string, contrasena: string) {
+  //   const existe = this.usuario.find(c => c.run == run);
+  //   if(!existe) {
+  //     this.usuario.unshift({run: run, primerNombre: nombre, correo: correo, contraseña: contrasena})
+  //     this._storage.set('usuario', this.usuario);
+  //     this.presentToast("usuario agregado con exito!!")
+  //   } else {
+  //     this.presentToast("error: usuario ya existe!!!")
+  //   }
+  // }
 
   async presentToast(mensaje:string) {
     const toast = await this.toastController.create({

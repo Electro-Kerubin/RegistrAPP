@@ -1,0 +1,88 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "correo": "aqui.baeza@duocuc.cl",
+      "contraseña": "pass123"
+    },
+    {
+      "correo": "aqui.baeza@duocuc.cl",
+      "contraseña": "pass123",
+      "id": 2
+    },
+    {
+      "correo": "aqui.baeza@duocuc.cl",
+      "contraseña": "pass123",
+      "id": 3
+    },
+    {
+      "correo": "aqui.baeza@duocuc.cl",
+      "contraseña": "pass123",
+      "id": 4
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 5
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 6
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 7
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 8
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 9
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 10
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 11
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 12
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "run": "20304923",
+      "dv": "4",
+      "primerNombre": "Aquiles",
+      "segundoNombre": "Segundo",
+      "paternoApellido": "Baeza",
+      "maternoApellido": "Perez",
+      "correo": "aqui.baeza@duocuc.cl",
+      "contraseña": "pass123"
+    },
+    {
+      "id": 2,
+      "run": "21549283",
+      "dv": "2",
+      "primerNombre": "Susana",
+      "segundoNombre": "Andrea",
+      "paternoApellido": "Cortez",
+      "maternoApellido": "Rojas",
+      "correo": "susa.cortez@duocuc.cl",
+      "contraseña": "pass123"
+    }
+  ]
+}
