@@ -18,6 +18,7 @@ export class ApiService {
     })
   }
 
+
   private usuario: Usuario = {
     id: 0,
     run: '',
@@ -29,45 +30,28 @@ export class ApiService {
     correo: '',
     contraseña: ''
   };
-  token: string = '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';
+  token: string = null;
   // token: string = null;
-  apiURL = 'http://192.168.0.3:3000';
+  apiURL = 'http://10.12.32.190:3000';
 
   
   constructor(private http:HttpClient, private storage: Storage, private navCtrl: NavController) {
     this.storage.create();
    }
 
-  login(usuario:string, password:string) {
-    
-    const data = {usuario, password};
-
-    return new Promise(resolve => {
-      this.http.post(this.apiURL+'/login', data)
-        .subscribe(resp => {
-          console.log(resp);
-          if(resp['ok']) {
-            // this.guardarToken(resp['token']);
-            // console.log('si')
-            // resolve(true);
-          } else {
-            // this.guardarToken(resp['token']);
-            this.guardarToken(this.token);
-            console.log('si')
-            resolve(true);
-
-            // console.log('no')
-            // this.token = null;
-            // this.storage.clear();
-            // resolve(false);
-          }
-        });
-    });
+   getUsuario(userId):Observable<any>{
+    return this.http.get(this.apiURL+'/usuarios/'+userId).pipe(
+      retry(3)
+    );
   }
 
-  async guardarToken(token:string) {
-    this.token = token;
-    await this.storage.set('token', token);
-  }
+   getUsuarios():Observable<any> {
+    return this.http.get(this.apiURL+'/usuarios').pipe(
+      retry(3)
+    );
+   }
+   
+   
+   
 
 }

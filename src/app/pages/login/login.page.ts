@@ -5,7 +5,7 @@ import { DbLocalService } from 'src/app/services/db-local.service';
 import { ApiService } from 'src/app/services/api.service';
 import { NgForm } from '@angular/forms';
 import { Storage } from '@ionic/storage-angular';
-import { Usuario } from 'src/app/interfaces/usuario';
+import { userLoginData } from 'src/app/interfaces/userLoginData';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,12 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class LoginPage implements OnInit {
 
-  usuario: Usuario;
-
   user = {
     usuario: '',
     clave: ''
   };
+
+  userDataLogin: string;
 
   hide = true;
 
@@ -34,30 +34,35 @@ export class LoginPage implements OnInit {
     ) {}
   
   //-------api--------
+  
+  validarUsuario(correo:string, password:string) {
     
-  async login(formLogin: NgForm) {
-
-    if(formLogin.invalid) {
-      return;
-    }
-
-    const usuarioValido = await this.api.login(this.user.usuario, this.user.clave);
-
-    if(usuarioValido) {
-      await this.storage.set('user', this.user.usuario);
-      this.navCtrl.navigateRoot('/home', {animated: true});
-      localStorage.setItem('guard', 'true');
-    } else{
-      this.toastLoginFail();
-    }
+    this.api.getUsuarios().subscribe((data)=>{
+      for(let i = 0; i < data.length; i++) {
+        if(correo == data[i].correo && password == data[i].contraseña) {
+          this.navCtrl.navigateRoot('home');
+          localStorage.setItem('guard', 'true');
+          this.userDataLogin = correo;
+          return console.log(this.userDataLogin)
+        } else {
+          continue
+        }
+        // console.log(data[i])
+      }
+      console.log('No iniciado')
+      //console.log(data);
+    });
   }
 
-
+  getUsuarioFromLogin() {
+    return this.userDataLogin;
+  }
+  
 
   //-------------------
 
   ngOnInit() {
-    //localStorage.setItem('guardLogin', 'false');
+    localStorage.setItem('guardLogin', 'false');
   }
   
 
@@ -81,9 +86,6 @@ export class LoginPage implements OnInit {
   }
 
   // async onSubmit() {
-
-    
-
 
   //    const usuario = await this.dblocalservice.verificarUser(this.user.usuario, this.user.clave);
   //    const infoUsuario = await this.dblocalservice.getUsuario(this.user.usuario, this.user.clave);

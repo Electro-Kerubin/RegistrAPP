@@ -8,3 +8,6 @@ ionic cap sync android
 
 npx cap sync android
 npx cap open android -> abre con android studio
+
+npm install -g json-server
+json-server -H 10.12.32.167 .\usuario.json

@@ -59,6 +59,21 @@
       "usuario": "aqui.baeza@duocuc.cl",
       "password": "pass123",
       "id": 12
+    },
+    {
+      "usuario": "aqui.baeza@duocuc.cl",
+      "password": "pass123",
+      "id": 13
+    },
+    {
+      "usuario": "pepe@duocuyc.cl",
+      "password": "asdasdasd",
+      "id": 14
+    },
+    {
+      "usuario": "pepe@duocuyc.cl",
+      "password": "asdasdasd",
+      "id": 15
     }
   ],
   "usuarios": [
