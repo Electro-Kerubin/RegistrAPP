@@ -19,9 +19,9 @@
   <div class="home_content animate__animated animate__fadeIn">
     <h1 class="custom-font">Bienvenido/a:</h1>
     <mat-chip-list aria-label="user-selection">
-      <mat-chip class="btn" routerLink="/profile">
+      <mat-chip class="btn" routerLink="/profile" *ngIf="usuarioDataHtml">
         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user" />
-        {{user.nom}}
+        {{ usuarioDataHtml.primerNombre }} {{ usuarioDataHtml.paternoApellido}} {{ usuarioDataHtml.maternoApellido}}
       </mat-chip>
     </mat-chip-list>
     <h2 class="custom-font">Seleccione una opción</h2>

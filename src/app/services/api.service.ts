@@ -32,7 +32,7 @@ export class ApiService {
   };
   token: string = null;
   // token: string = null;
-  apiURL = 'http://10.12.32.190:3000';
+  apiURL = 'http://192.168.0.3:3000';
 
   
   constructor(private http:HttpClient, private storage: Storage, private navCtrl: NavController) {

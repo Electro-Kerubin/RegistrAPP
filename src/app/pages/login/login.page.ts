@@ -3,9 +3,9 @@ import { NavigationExtras, Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { DbLocalService } from 'src/app/services/db-local.service';
 import { ApiService } from 'src/app/services/api.service';
-import { NgForm } from '@angular/forms';
 import { Storage } from '@ionic/storage-angular';
-import { userLoginData } from 'src/app/interfaces/userLoginData';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { StorageTestService } from 'src/app/services/storage-test.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +21,9 @@ export class LoginPage implements OnInit {
 
   userDataLogin: string;
 
+  //Data API
+  userDataApi: Usuario;
+
   hide = true;
 
 
@@ -30,7 +33,7 @@ export class LoginPage implements OnInit {
     public dblocalservice: DbLocalService,
     public navCtrl: NavController,
     private api: ApiService,
-    private storage: Storage,
+    private storageTest: StorageTestService,
     ) {}
   
   //-------api--------
@@ -43,6 +46,7 @@ export class LoginPage implements OnInit {
           this.navCtrl.navigateRoot('home');
           localStorage.setItem('guard', 'true');
           this.userDataLogin = correo;
+          this.storageTest.addUsuarioCorreoData(correo);
           return console.log(this.userDataLogin)
         } else {
           continue
@@ -63,6 +67,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     localStorage.setItem('guardLogin', 'false');
+    this.storageTest.clearUsuarioCorreoData;
   }
   
 

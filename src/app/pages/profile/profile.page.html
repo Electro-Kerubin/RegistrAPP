@@ -17,10 +17,10 @@
 
 <ion-content>
   <mat-card class="card custom-font">
-    <mat-card-header>
+    <mat-card-header *ngIf="usuarioDataHtml">
       <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>asd</mat-card-title>
-      <mat-card-subtitle>asd</mat-card-subtitle>
+      <mat-card-title>{{ usuarioDataHtml.primerNombre }} {{ usuarioDataHtml.paternoApellido}} {{ usuarioDataHtml.maternoApellido}}</mat-card-title>
+      <mat-card-subtitle>{{ usuarioDataHtml.correo }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>

@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { Storage } from '@ionic/storage-angular';
-//import { LoginPage } from '../login/login.page'; 
+import { ApiService } from 'src/app/services/api.service';
+import { StorageTestService } from 'src/app/services/storage-test.service';
 
 
 @Component({
@@ -20,13 +21,21 @@ export class HomePage {
     nom: ''
   }
 
+  // codigo qr
   code: any;
+
+  //Correo de usuario
+  userLoginData: string = this.storageTest.getUsuarioCorreoData();
+
+  //Data usuario API
+  usuarioDataHtml: any;
 
   constructor(private router: Router, 
               private activeroute: ActivatedRoute,
               private camera:Camera, 
               private barcodeScanner: BarcodeScanner,
-              private storage: Storage, 
+              private api: ApiService,
+              private storageTest:StorageTestService,
               ) {
     this.activeroute.queryParams.subscribe(
       params => {
@@ -38,9 +47,20 @@ export class HomePage {
     );
   }
 
-  //----------- 
+  //----------- GET API REST USUARIO
 
-  
+  // Get Api Usuario
+  getUsuarioByCorreo(correo){
+    this.api.getUsuarios().subscribe((data) => {
+      for(let i = 0; i < data.length; i++){
+        if(correo == data[i].correo) {
+          return this.usuarioDataHtml = data[i]
+        } else {
+          continue
+        }
+      }
+    });
+  }
   
 
   //----------- Rodrigo Scan ---------//
@@ -71,7 +91,7 @@ export class HomePage {
   }
 
   async ngOnInit(){
-    // console.log(this.loginFun.saveUser());
+    this.getUsuarioByCorreo(this.userLoginData)
     this.user.nom = await localStorage.getItem('user');
   }
 

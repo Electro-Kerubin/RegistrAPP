@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ApiService } from 'src/app/services/api.service';
-import { LoginPage } from '../login/login.page';
+import { StorageTestService } from 'src/app/services/storage-test.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,16 +11,18 @@ import { LoginPage } from '../login/login.page';
 })
 export class ProfilePage implements OnInit {
 
-  routerState: any;
-  
-  userLoginData:string;
+  //routerState: any;
 
-  // usuarioDataHtml: Usuario;
+  //Correo de usuario
+  userLoginData: string = this.storageTest.getUsuarioCorreoData();
+
+  //Data usuario API
+  usuarioDataHtml: any;
 
   constructor(private router: Router,
               private activeroute: ActivatedRoute,
               private api: ApiService,
-              private loginPageData: LoginPage) {
+              private storageTest: StorageTestService,) {
       // this.activeroute.queryParams.subscribe(
       // params => {
       //   if(this.router.getCurrentNavigation().extras.state){
@@ -31,23 +33,24 @@ export class ProfilePage implements OnInit {
       // );
   }
 
-  // getUsuarioByCorreo(correo){
-  //   this.api.getUsuarios().subscribe((data) => {
-  //     for(let i = 0; i < data.length; i++){
-  //       if(correo == data[i].correo) {
-  //         // this.usuarioDataHtml = data[i]
-  //       } else {
-  //         continue
-  //       }
-  //     }
-  //   });
-  // }
+  // Get Api Usuario
+   getUsuarioByCorreo(correo){
+     this.api.getUsuarios().subscribe((data) => {
+       for(let i = 0; i < data.length; i++){
+         if(correo == data[i].correo) {
+           this.usuarioDataHtml = data[i]      
+       }     
+         else {
+           continue
+         }
+       }
+     });
+   }
 
 
 
   ngOnInit(){
-    // this.userLoginData = this.loginPageData.getUsuarioFromLogin();
-    // this.getUsuarioByCorreo(this.userLoginData)
+     this.getUsuarioByCorreo(this.userLoginData)
   }
 
 }

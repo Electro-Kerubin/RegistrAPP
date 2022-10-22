@@ -14,6 +14,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { LoginPage } from './pages/login/login.page';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
   providers: [
     Camera,
     BarcodeScanner,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite,LoginPage
   ],
   bootstrap: [
     AppComponent
