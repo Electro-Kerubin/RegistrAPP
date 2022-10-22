@@ -17,7 +17,7 @@ export class ProfilePage implements OnInit {
   userLoginData: string = this.storageTest.getUsuarioCorreoData();
 
   //Data usuario API
-  usuarioDataHtml: any;
+  usuarioDataHtml: Usuario;
 
   constructor(private router: Router,
               private activeroute: ActivatedRoute,

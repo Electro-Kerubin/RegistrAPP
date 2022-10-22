@@ -5,6 +5,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageTestService } from 'src/app/services/storage-test.service';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class HomePage {
   userLoginData: string = this.storageTest.getUsuarioCorreoData();
 
   //Data usuario API
-  usuarioDataHtml: any;
+  usuarioDataHtml: Usuario;
 
   constructor(private router: Router, 
               private activeroute: ActivatedRoute,
