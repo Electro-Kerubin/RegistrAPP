@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController,
     private api: ApiService,
     private storageTest: StorageTestService,
+    private db_storage: Storage,
     ) {}
   
   //-------api--------
@@ -46,6 +47,7 @@ export class LoginPage implements OnInit {
           this.navCtrl.navigateRoot('home');
           localStorage.setItem('guard', 'true');
           this.userDataLogin = correo;
+          this.db_storage.set('correo', correo);
           this.storageTest.addUsuarioCorreoData(correo);
           return console.log("ingresado")
         } else {
@@ -64,7 +66,7 @@ export class LoginPage implements OnInit {
   //-------------------
 
   ngOnInit() {
-    localStorage.setItem('guardLogin', 'false');
+    localStorage.setItem('guard', 'false');
     this.storageTest.clearUsuarioCorreoData;
   }
   

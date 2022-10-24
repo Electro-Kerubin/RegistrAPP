@@ -5,6 +5,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageTestService } from 'src/app/services/storage-test.service';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class HomePage {
               private barcodeScanner: BarcodeScanner,
               private api: ApiService,
               private storageTest:StorageTestService,
+              private db_storage: Storage,
               ) {
     // this.activeroute.queryParams.subscribe(
     //   params => {
@@ -92,8 +94,9 @@ export class HomePage {
 
   async ngOnInit(){
     this.userLoginData = await this.storageTest.getUsuarioCorreoData();
-    console.log("correo: " + this.userLoginData)
-    this.getUsuarioByCorreo(this.userLoginData)
+    this.getUsuarioByCorreo(this.userLoginData);
+    //this.userLoginData = localStorage.getItem('correo');
+    //this.getUsuarioByCorreo(this.userLoginData)
     //this.user.nom = await localStorage.getItem('user');
   }
 
