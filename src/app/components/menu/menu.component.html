@@ -15,37 +15,17 @@
           {{ i.title }}
         </ion-item>
 
-        <ion-item *ngIf="i.title != 'Logout'" class="clickable" [routerLink]="i.url" button>
+        <ion-item *ngIf="i.title != 'Home'" class="clickable" [routerLink]="i.url" button>
+          <mat-icon>{{ i.icon }}</mat-icon>
+          {{ i.title }}
+        </ion-item>
+
+        <ion-item *ngIf="i.title != 'Profile'" class="clickable" [routerLink]="i.url" button>
           <mat-icon>{{ i.icon }}</mat-icon>
           {{ i.title }}
         </ion-item>
 
       </ion-menu-toggle>
-
-      <!-- <p>
-        <button mat-button>
-          <mat-icon>home</mat-icon>
-          Home
-        </button>
-      </p>
-      <p>
-        <button mat-button>
-          <mat-icon>perm_identity</mat-icon>
-          Profile
-        </button>
-      </p>
-      <p>
-        <button mat-button>
-          <mat-icon>settings</mat-icon>
-          Settings
-        </button>
-      </p>
-      <p>
-        <button mat-button routerLink="/login">
-          <mat-icon>exit_to_app</mat-icon>
-          Logout
-        </button>
-      </p> -->
     </ion-list>
   </ion-content>
 </ion-menu>

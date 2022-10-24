@@ -8,5 +8,10 @@
         "title": "Logout",
         "url": "/login",
         "icon": "exit_to_app"
+    },
+    {
+        "title": "Profile",
+        "url": "/profile",
+        "icon": "person-circle-outline"
     }
 ]
