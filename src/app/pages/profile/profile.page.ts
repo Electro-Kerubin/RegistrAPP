@@ -51,6 +51,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit(){
      this.getUsuarioByCorreo(this.userLoginData)
+     console.log("correo: " + this.userLoginData)
   }
 
 }

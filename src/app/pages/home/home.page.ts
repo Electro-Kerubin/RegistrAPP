@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-import { Storage } from '@ionic/storage-angular';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageTestService } from 'src/app/services/storage-test.service';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -38,14 +37,14 @@ export class HomePage {
               private api: ApiService,
               private storageTest:StorageTestService,
               ) {
-    this.activeroute.queryParams.subscribe(
-      params => {
-        if(this.router.getCurrentNavigation().extras.state){
-          this.routerState = this.router.getCurrentNavigation().extras.state;
-          localStorage.setItem('user', this.routerState.usuario.split('@')[0]);
-        }
-      }
-    );
+    // this.activeroute.queryParams.subscribe(
+    //   params => {
+    //     if(this.router.getCurrentNavigation().extras.state){
+    //       this.routerState = this.router.getCurrentNavigation().extras.state;
+    //       localStorage.setItem('user', this.routerState.usuario.split('@')[0]);
+    //     }
+    //   }
+    // );
   }
 
   //----------- GET API REST USUARIO
@@ -93,7 +92,7 @@ export class HomePage {
 
   async ngOnInit(){
     this.userLoginData = await this.storageTest.getUsuarioCorreoData();
-    console.log(this.userLoginData)
+    console.log("correo: " + this.userLoginData)
     this.getUsuarioByCorreo(this.userLoginData)
     //this.user.nom = await localStorage.getItem('user');
   }
