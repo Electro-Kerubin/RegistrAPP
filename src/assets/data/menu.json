@@ -5,13 +5,18 @@
         "icon": "home"
     },
     {
-        "title": "Logout",
-        "url": "/login",
-        "icon": "exit_to_app"
-    },
-    {
         "title": "Profile",
         "url": "/profile",
         "icon": "person-circle-outline"
+    },
+    {
+        "title": "Setting",
+        "url": "/setting",
+        "icon": "ion-ios-gear"
+    },
+    {
+        "title": "Logout",
+        "url": "/login",
+        "icon": "exit_to_app"
     }
 ]

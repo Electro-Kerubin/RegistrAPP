@@ -26,7 +26,7 @@ export class HomePage {
   code: any;
 
   //Correo de usuario
-  userLoginData: string = this.storageTest.getUsuarioCorreoData();
+  userLoginData: string;
 
   //Data usuario API
   usuarioDataHtml: Usuario;
@@ -51,7 +51,7 @@ export class HomePage {
   //----------- GET API REST USUARIO
 
   // Get Api Usuario
-  getUsuarioByCorreo(correo){
+  async getUsuarioByCorreo(correo){
     this.api.getUsuarios().subscribe((data) => {
       for(let i = 0; i < data.length; i++){
         if(correo == data[i].correo) {
@@ -92,8 +92,10 @@ export class HomePage {
   }
 
   async ngOnInit(){
+    this.userLoginData = await this.storageTest.getUsuarioCorreoData();
+    console.log(this.userLoginData)
     this.getUsuarioByCorreo(this.userLoginData)
-    this.user.nom = await localStorage.getItem('user');
+    //this.user.nom = await localStorage.getItem('user');
   }
 
 }

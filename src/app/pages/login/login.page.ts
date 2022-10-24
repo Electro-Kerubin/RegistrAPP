@@ -47,14 +47,12 @@ export class LoginPage implements OnInit {
           localStorage.setItem('guard', 'true');
           this.userDataLogin = correo;
           this.storageTest.addUsuarioCorreoData(correo);
-          return console.log(this.userDataLogin)
+          return console.log("ingresado")
         } else {
           continue
         }
-        // console.log(data[i])
       }
-      console.log('No iniciado')
-      //console.log(data);
+      this.toastLoginFail("Los datos introducidos son incorrectos.")
     });
   }
 
@@ -82,9 +80,9 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  async toastLoginFail() {
+  async toastLoginFail(mensaje: string) {
     const toast = await this.toastController.create({
-      message: 'Ingrese corectamente sus datos',
+      message: mensaje,
       duration: 2000
     });
     toast.present();
