@@ -44,23 +44,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canActivate: [GuardIngresadoGuard]
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    ,canActivate: [GuardIngresadoGuard]
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    canActivate: [GuardNoIngresadoGuard]
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    ,canActivate: [GuardNoIngresadoGuard]
   },
   {
     path: 'rest-clave',
-    loadChildren: () => import('./pages/rest-clave/rest-clave.module').then( m => m.RestClavePageModule),
-    canActivate: [GuardNoIngresadoGuard]
+    loadChildren: () => import('./pages/rest-clave/rest-clave.module').then( m => m.RestClavePageModule)
+    ,canActivate: [GuardNoIngresadoGuard]
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
-    canActivate: [GuardIngresadoGuard]
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    ,canActivate: [GuardIngresadoGuard]
   },
   {
     path: 'e404',
