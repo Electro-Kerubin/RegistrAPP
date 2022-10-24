@@ -11,3 +11,4 @@ npx cap open android -> abre con android studio
 
 npm install -g json-server
 json-server -H 10.12.32.167 .\usuario.json
+json-server -H 192.168.1.4 .\usuario.json
