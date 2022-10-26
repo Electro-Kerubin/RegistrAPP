@@ -4,19 +4,24 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EscanearPageRoutingModule } from './escanear-routing.module';
+import { GenerarPageRoutingModule } from './generar-routing.module';
 
-import { EscanearPage } from './escanear.page';
+import { GenerarPage } from './generar.page';
 import { ComponentsModule } from '../../components/components.module';
+import { QRCodeModule } from 'angularx-qrcode';
+
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
+    QRCodeModule,
     CommonModule,
     FormsModule,
     IonicModule,
-    EscanearPageRoutingModule,
+    MatButtonModule,
+    GenerarPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [EscanearPage]
+  declarations: [GenerarPage]
 })
-export class EscanearPageModule {}
+export class GenerarPageModule {}

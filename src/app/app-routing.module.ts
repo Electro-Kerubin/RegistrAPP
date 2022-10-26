@@ -36,6 +36,16 @@ const routes: Routes = [
     redirectTo: 'agregar-usuario',
     pathMatch: 'full'
   },
+  {
+    path: 'escanear',
+    redirectTo: 'escanear',
+    pathMatch: 'full'
+  },
+  {
+    path: 'generar',
+    redirectTo: 'generar',
+    pathMatch: 'full'
+  },
   //esta ruta de 404 siempre debe ser la ultima
   {
     path: '**',
@@ -63,6 +73,16 @@ const routes: Routes = [
     ,canActivate: [GuardIngresadoGuard]
   },
   {
+    path: 'escanear',
+    loadChildren: () => import('./pages/escanear/escanear.module').then( m => m.EscanearPageModule)
+    ,canActivate: [GuardIngresadoGuard]
+  },
+  {
+    path: 'generar',
+    loadChildren: () => import('./pages/generar/generar.module').then( m => m.GenerarPageModule)
+    ,canActivate: [GuardIngresadoGuard]
+  },
+  {
     path: 'e404',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
@@ -70,6 +90,9 @@ const routes: Routes = [
     path: 'agregar-usuario',
     loadChildren: () => import('./pages/agregar-usuario/agregar-usuario.module').then( m => m.AgregarUsuarioPageModule)
   },
+  
+
+
 
 
 

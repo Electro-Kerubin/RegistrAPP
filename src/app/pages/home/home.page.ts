@@ -77,6 +77,9 @@ export class HomePage {
   scan(){
     this.router.navigate(['/escanear']);
   }
+  generate(){
+    this.router.navigate(['/generar']);
+  }
 
   //------- el otro scan --------//
   takePicture() {
