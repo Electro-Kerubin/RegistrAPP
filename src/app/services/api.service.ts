@@ -30,9 +30,8 @@ export class ApiService {
     correo: '',
     contraseña: ''
   };
-  token: string = null;
-  // token: string = null;
-  apiURL = 'http://192.168.0.3:3000';
+
+  apiURL = 'http://192.168.34.184:3000';
 
   
   constructor(private http:HttpClient, private storage: Storage, private navCtrl: NavController) {
