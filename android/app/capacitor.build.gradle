@@ -14,9 +14,10 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
     implementation "androidx.exifinterface:exifinterface:1.2.0"
-    implementation "com.android.support:support-v4:27.+"
+    implementation 'com.android.support:support-v4:28.0.0'
 }
 apply from: "../../node_modules/phonegap-plugin-barcodescanner/src/android/barcodescanner.gradle"
+apply from: "../../node_modules/cordova-android-support-gradle-release/cordova-android-support-gradle-release.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

@@ -64,13 +64,16 @@ export class HomePage {
   
 
   //----------- Rodrigo Scan ---------//
-  scan() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      this.code = barcodeData.text;
-      console.log('Barcode data', this.code);
-     }).catch(err => {
-         console.log('Error', err);
-     });
+  // scan() {
+  //   this.barcodeScanner.scan().then(barcodeData => {
+  //     this.code = barcodeData.text;
+  //     console.log('Barcode data', this.code);
+  //    }).catch(err => {
+  //        console.log('Error', err);
+  //    });
+  // }
+  scan(){
+    this.router.navigate(['/escanear']);
   }
 
   //------- el otro scan --------//
