@@ -15,15 +15,18 @@ export class DbLocalService {
     private storage: Storage,
     public toastController: ToastController
   ) {
+    // ---- inicializa el localstorage*
     this.init();
   }
 
+  // ---- inicializa el localstorage*
   async init() {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this._storage = storage;
   }
 
+  // ----- verifica la existencia del usuario mediante el correo en el localstorage
   async getUsuario(correo: string):Promise<Usuario> {
     const users = await this.storage.get('usuario')
     for(let i = 0; i < users.length; i++) {
@@ -33,7 +36,7 @@ export class DbLocalService {
     }
   }
 
-
+  // ----- Verifica si los datos introducidos en el login son correctos.
   async verificarUser(correo: string, pass: string):Promise<boolean> {
     const users = await this.storage.get('usuario')
     for(let i = 0; i < users.length; i++){
@@ -50,33 +53,23 @@ export class DbLocalService {
       } else {
         continue
       }
-
-      // console.log(users[i].run);
-      // console.log(correo);
     }
-
     return false
   }
 
-  //-----------------------
-  async getUsuarios() {
-    const usuarioExiste = await this.storage.get('usuario');
-    if(usuarioExiste) {
-      this.usuario = usuarioExiste;
+  // --------------- Guarda usuarios en el localstorage con la pagina 'agregar-usuario' ------------
+  saveUsuario(run: string, nombre: string, correo: string, contrasena: string) {
+    const existe = this.usuario.find(c => c.run == run);
+    if(!existe) {
+      this.usuario.unshift({run: run, primerNombre: nombre, correo: correo, contraseña: contrasena})
+      this._storage.set('usuario', this.usuario);
+      this.presentToast("usuario agregado con exito!!")
+    } else {
+      this.presentToast("error: usuario ya existe!!!")
     }
   }
 
-  // saveUsuario(run: string, nombre: string, correo: string, contrasena: string) {
-  //   const existe = this.usuario.find(c => c.run == run);
-  //   if(!existe) {
-  //     this.usuario.unshift({run: run, primerNombre: nombre, correo: correo, contraseña: contrasena})
-  //     this._storage.set('usuario', this.usuario);
-  //     this.presentToast("usuario agregado con exito!!")
-  //   } else {
-  //     this.presentToast("error: usuario ya existe!!!")
-  //   }
-  // }
-
+  // ----------- PresentToast -------------
   async presentToast(mensaje:string) {
     const toast = await this.toastController.create({
       message: mensaje,

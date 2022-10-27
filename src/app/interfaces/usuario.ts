@@ -1,3 +1,5 @@
+// Estructura que contiene los datos de la API REST.
+
 export interface Usuario {
     id?: number,
     run?: string,

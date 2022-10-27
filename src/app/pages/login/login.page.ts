@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { DbLocalService } from 'src/app/services/db-local.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -14,16 +14,19 @@ import { StorageTestService } from 'src/app/services/storage-test.service';
 })
 export class LoginPage implements OnInit {
 
+  // ----- guarda los datos del html ------
   user = {
     usuario: '',
     clave: ''
   };
 
+  // ----- guarda el correo en el storageTestService 
   userDataLogin: string;
 
-  //Data API
+  //------- Data API
   userDataApi: Usuario;
 
+  // ----- valor de la casilla que muestra contraseña
   hide = true;
 
 
@@ -36,9 +39,14 @@ export class LoginPage implements OnInit {
     private storageTest: StorageTestService,
     private db_storage: Storage,
     ) {}
+
+  //-------------------
+  ngOnInit() {
+    localStorage.setItem('guard', 'false');
+    this.storageTest.clearUsuarioCorreoData;
+  }
   
-  //-------api--------
-  
+  //------- call api --------
   validarUsuario(correo:string, password:string) {
     
     this.api.getUsuarios().subscribe((data)=>{
@@ -54,68 +62,17 @@ export class LoginPage implements OnInit {
           continue
         }
       }
-      this.toastLoginFail("Los datos introducidos son incorrectos.")
+      this.toastLogin("Los datos introducidos son incorrectos.")
     });
   }
 
-  getUsuarioFromLogin() {
-    return this.userDataLogin;
-  }
-  
-
-  //-------------------
-
-  ngOnInit() {
-    localStorage.setItem('guard', 'false');
-    this.storageTest.clearUsuarioCorreoData;
-  }
-  
-
-
-  // -------------
-
-  async toastLoginSuccess() {
-    const toast = await this.toastController.create({
-      message: 'Inicio de sección exitosa.',
-      duration: 2000
-    });
-    toast.present();
-  }
-
-  async toastLoginFail(mensaje: string) {
+  //-------- toast general ------------
+  async toastLogin(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
       duration: 2000
     });
     toast.present();
   }
-
-  // async onSubmit() {
-
-  //    const usuario = await this.dblocalservice.verificarUser(this.user.usuario, this.user.clave);
-  //    const infoUsuario = await this.dblocalservice.getUsuario(this.user.usuario, this.user.clave);
-
-  //    if(usuario == true) {
-  //      const navegationExtras: NavigationExtras = {
-  //        state: this.user,
-  //        };
-  //       //  this.router.navigate(['/home'], navegationExtras);
-  //        this.navCtrl.navigateRoot('home');
-  //        this.toastLoginSuccess();
-  //        localStorage.setItem('guard', 'true');
-  //        localStorage.setItem('user', infoUsuario.primerNombre);
-  //        localStorage.setItem('userCorreo', infoUsuario.correo);
-
-  //    } else {
-  //      const toast = await this.toastController.create({
-  //        message: 'No se pudo iniciar sesión',
-  //        duration: 2000
-  //      });
-  //      toast.present();
-  //    }
-
-
-  // }
-
 
 }

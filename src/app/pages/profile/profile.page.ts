@@ -11,8 +11,6 @@ import { StorageTestService } from 'src/app/services/storage-test.service';
 })
 export class ProfilePage implements OnInit {
 
-  //routerState: any;
-
   //Correo de usuario
   userLoginData: string = this.storageTest.getUsuarioCorreoData();
 
@@ -22,16 +20,13 @@ export class ProfilePage implements OnInit {
   constructor(private router: Router,
               private activeroute: ActivatedRoute,
               private api: ApiService,
-              private storageTest: StorageTestService,) {
-      // this.activeroute.queryParams.subscribe(
-      // params => {
-      //   if(this.router.getCurrentNavigation().extras.state){
-      //     this.routerState = this.router.getCurrentNavigation().extras.state;
-      //     localStorage.setItem('user', this.routerState.usuario);
-      //   }
-      // }
-      // );
-  }
+              private storageTest: StorageTestService,) {}
+
+  // ------------------------
+  ngOnInit(){
+    this.getUsuarioByCorreo(this.userLoginData)
+    console.log("correo: " + this.userLoginData)
+ }
 
   // Get Api Usuario
    getUsuarioByCorreo(correo){
@@ -46,12 +41,5 @@ export class ProfilePage implements OnInit {
        }
      });
    }
-
-
-
-  ngOnInit(){
-     this.getUsuarioByCorreo(this.userLoginData)
-     console.log("correo: " + this.userLoginData)
-  }
 
 }
