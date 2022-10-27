@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-// Service creado para almacenar la variable correo del formularioLogin para poder reutilizarla en las de mas pages.
+// Service creado para almacenar la variable correo del formularioLogin para poder reutilizarla en las demas pages.
 @Injectable({
   providedIn: 'root'
 })

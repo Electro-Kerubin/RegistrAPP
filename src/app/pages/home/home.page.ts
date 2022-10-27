@@ -30,9 +30,14 @@ export class HomePage {
               private barcodeScanner: BarcodeScanner,
               private api: ApiService,
               private storageTest:StorageTestService,
-              ) {
-  }
+              ) {}
 
+  // -------------------------------
+  async ngOnInit(){
+    this.userLoginData = await this.storageTest.getUsuarioCorreoData();
+    this.getUsuarioByCorreo(this.userLoginData);
+  }
+  
   //----------- GET API REST USUARIO
   // Get Api Usuario
   async getUsuarioByCorreo(correo){
@@ -46,7 +51,7 @@ export class HomePage {
       }
     });
   }
-  
+
   //----------- Scanner QR ---------//
   scan() {
     this.barcodeScanner.scan().then(barcodeData => {
@@ -55,26 +60,14 @@ export class HomePage {
      }).catch(err => {
          console.log('Error', err);
      });
+    }
 
-  //----------- Rodrigo Scan ---------//
-  // scan() {
-  //   this.barcodeScanner.scan().then(barcodeData => {
-  //     this.code = barcodeData.text;
-  //     console.log('Barcode data', this.code);
-  //    }).catch(err => {
-  //        console.log('Error', err);
-  //    });
-  // }
-  scan(){
+  // ---------- No se que hacen -----------  
+  _scan(){
     this.router.navigate(['/escanear']);
   }
   generate(){
     this.router.navigate(['/generar']);
   }
-
-  async ngOnInit(){
-    this.userLoginData = await this.storageTest.getUsuarioCorreoData();
-    this.getUsuarioByCorreo(this.userLoginData);
-  }
-
+  // ------------------------
 }

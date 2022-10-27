@@ -17,19 +17,6 @@ export class ApiService {
     })
   }
 
-
-  private usuario: Usuario = {
-    id: 0,
-    run: '',
-    dv: '',
-    primerNombre: '',
-    segundoNombre: '',
-    paternoApellido: '',
-    maternoApellido: '',
-    correo: '',
-    contraseña: ''
-  };
-
   apiURL = 'http://192.168.34.184:3000';
 
   
