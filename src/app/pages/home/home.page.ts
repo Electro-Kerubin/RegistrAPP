@@ -55,6 +55,21 @@ export class HomePage {
      }).catch(err => {
          console.log('Error', err);
      });
+
+  //----------- Rodrigo Scan ---------//
+  // scan() {
+  //   this.barcodeScanner.scan().then(barcodeData => {
+  //     this.code = barcodeData.text;
+  //     console.log('Barcode data', this.code);
+  //    }).catch(err => {
+  //        console.log('Error', err);
+  //    });
+  // }
+  scan(){
+    this.router.navigate(['/escanear']);
+  }
+  generate(){
+    this.router.navigate(['/generar']);
   }
 
   async ngOnInit(){

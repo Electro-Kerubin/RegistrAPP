@@ -26,16 +26,21 @@
     </mat-chip-list>
     <h2 class="custom-font">Seleccione una opción</h2>
     <button mat-stroked-button class="boton custom-font" (click)="scan()">
+      <ion-img class="img" src="assets/images/scan.svg"></ion-img>
+      <img *ngIf="image" [src]="image" alt="image">
+      Escanear QR
+    </button>
+    <button mat-stroked-button class="boton custom-font" (click)="generate()">
       <ion-img class="img" src="assets/images/QR_code.svg"></ion-img>
       <img *ngIf="image" [src]="image" alt="image">
-      Leer QR
+      Generar QR
     </button>
     <button mat-stroked-button class="boton custom-font">
       <ion-img class=img src="assets/images/Checklist.svg"></ion-img>
       Asistencia
     </button>
   </div>
-  <div class="blob-center">
-    <ion-img src="assets/images/Background.svg"></ion-img>
-  </div>
+  <svg class="blob-center" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FF0066" d="M46.7,-54.6C61.3,-43.5,74.3,-29.4,77.2,-13.5C80,2.3,72.7,20.1,62.2,33.6C51.6,47,37.7,56.3,21.7,64.1C5.6,72,-12.6,78.4,-27.4,73.7C-42.1,69,-53.3,53.1,-61.7,36.6C-70.1,20,-75.8,2.8,-75.3,-15.7C-74.9,-34.2,-68.5,-54.1,-54.9,-65.4C-41.4,-76.7,-20.7,-79.4,-2.3,-76.7C16.1,-73.9,32.2,-65.7,46.7,-54.6Z" transform="translate(100 100)" />
+  </svg>
 </ion-content>

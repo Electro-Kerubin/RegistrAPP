@@ -26,6 +26,11 @@
           {{ i.title }}
         </ion-item>
 
+        <ion-item *ngIf="i.title == 'Escanear'" class="clickable" [routerLink]="i.url" button>
+          <mat-icon>{{ i.icon }}</mat-icon>
+          {{ i.title }}
+        </ion-item>
+
         <ion-item *ngIf="i.title == 'Setting'" class="clickable" [routerLink]="i.url" button>
           <mat-icon>{{ i.icon }}</mat-icon>
           {{ i.title }}

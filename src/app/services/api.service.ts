@@ -17,7 +17,20 @@ export class ApiService {
     })
   }
 
-  apiURL = 'http://10.12.32.205:3000';
+
+  private usuario: Usuario = {
+    id: 0,
+    run: '',
+    dv: '',
+    primerNombre: '',
+    segundoNombre: '',
+    paternoApellido: '',
+    maternoApellido: '',
+    correo: '',
+    contraseña: ''
+  };
+
+  apiURL = 'http://192.168.34.184:3000';
 
   
   constructor(private http:HttpClient, private storage: Storage, private navCtrl: NavController) {

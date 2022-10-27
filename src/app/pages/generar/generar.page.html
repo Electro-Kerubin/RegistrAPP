@@ -1,0 +1,35 @@
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
+  rel="stylesheet">
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="back-rectangle"></div>
+    <ion-title class="ion-text-center custom-font">RegistrAPP</ion-title>
+    <ion-buttons color="light" slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<app-menu></app-menu>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-title class="ion-text-center custom-font">Generar Código <ion-icon name="qr-code-outline"></ion-icon></ion-title>
+  <div class="form_class">
+    <form #formLogin="ngForm" class="formularioQR" action="">
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="qr.asignatura" interface="popover" placeholder="Seleccionar Asignatura" name="qr-asignatura">
+            <ion-select-option value="Programación de base de datos">Programación de base de datos</ion-select-option>
+            <ion-select-option value="Programación Mobile">Programación Mobile</ion-select-option>
+            <ion-select-option value="Programación Web">Programación Web</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <button mat-stroked-button class="btn custom-font" (click)="generar()">
+        Generar
+      </button>
+    </form>
+  </div>
+  <qrcode class="ion-text-center" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+</ion-content>

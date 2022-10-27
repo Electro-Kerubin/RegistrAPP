@@ -15,11 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { LoginPage } from './pages/login/login.page';
-
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    QRCodeModule,
     BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,

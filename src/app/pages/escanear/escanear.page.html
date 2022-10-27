@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
+  rel="stylesheet">
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="back-rectangle"></div>
+    <ion-title class="ion-text-center custom-font">RegistrAPP</ion-title>
+    <ion-buttons color="light" slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<app-menu></app-menu>
+
+<ion-content>
+  <ion-title class="ion-text-center custom-font">Escanear Código <ion-icon name="qr-code-outline"></ion-icon></ion-title> 
+  <ion-item *ngIf="scannedResult">
+    <ion-label>
+      {{scannedResult}}
+    </ion-label>
+  </ion-item>
+</ion-content>
