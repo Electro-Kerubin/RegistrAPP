@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     localStorage.setItem('guard', 'false');
     this.storageTest.clearUsuarioCorreoData;
+
   }
   
   //------- call api --------

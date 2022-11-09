@@ -17,7 +17,7 @@ export class ApiService {
     })
   }
 
-  apiURL = 'http://192.168.34.184:3000';
+  apiURL = 'https://my-json-server.typicode.com/Electro-Kerubin/ApiRegistrAPP';
 
   
   constructor(private http:HttpClient, private storage: Storage, private navCtrl: NavController) {
