@@ -34,12 +34,11 @@ ion-toolbar {
 
 ion-content {
     .blob-center {
-        z-index: -1;
-        height: 558px;
-        width: 548px;
+        z-index: -100;
         position: absolute;
-        left: -50%;
-        top: 30px;
+        width: 700px;
+        left: -90px;
+        top: 30px
     }
 
     form {
@@ -54,7 +53,7 @@ ion-content {
     }
 
     .input {
-        display: block;
+        
         width: 100%;
         background: transparent;
         font-family: 'Josefin Sans', sans-serif;
