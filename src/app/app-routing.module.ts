@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { GuardIngresadoGuard } from './guards/guard-ingresado.guard';
 import { GuardNoIngresadoGuard } from './guards/guard-no-ingresado.guard';
-import { DbService } from './services/db.service';
 
 const routes: Routes = [
   
@@ -91,12 +90,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/agregar-usuario/agregar-usuario.module').then( m => m.AgregarUsuarioPageModule)
   },
   
-
-
-
-
-
-
 ];
 
 @NgModule({

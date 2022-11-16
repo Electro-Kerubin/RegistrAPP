@@ -22,7 +22,9 @@ export class MenuComponent implements OnInit {
   logout() {
     localStorage.setItem('guard', 'false');
     this.storageTest.clearUsuarioCorreoData;
-
+    
   }
+
+  
 
 }

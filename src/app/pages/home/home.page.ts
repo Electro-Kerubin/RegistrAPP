@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ApiService } from 'src/app/services/api.service';
-import { StorageTestService } from 'src/app/services/storage-test.service';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit, OnDestroy {
   image: string;
   showFiller = false;
 
@@ -19,31 +18,41 @@ export class HomePage {
   code: any;
 
   //Correo de usuario
-  userLoginData: string;
+  userLoginData: string
 
   //Data usuario API
   usuarioDataHtml: Usuario;
 
+  //Lista de observables para evitar la fuga de memoria generada por las mutliples subscripciones
+  listObservables: Array<Subscription>;
+
   constructor(private router: Router, 
-              private activeroute: ActivatedRoute,
-              private camera:Camera, 
               private barcodeScanner: BarcodeScanner,
               private api: ApiService,
-              private storageTest:StorageTestService,
-              ) {}
+              ) {
+                this.userLoginData = localStorage.getItem('correo');
+                this.getUsuarioByCorreo(this.userLoginData);
+              }
+  
 
   // -------------------------------
-  async ngOnInit(){
-    this.userLoginData = await this.storageTest.getUsuarioCorreoData();
-    this.getUsuarioByCorreo(this.userLoginData);
+  ngOnInit(){
+    
   }
-  
+
+  ngOnDestroy(): void {
+    this.listObservables.forEach(sub => sub.unsubscribe())
+    console.log("homeDestroy")
+  }
+
+
   //----------- GET API REST USUARIO
   // Get Api Usuario
   async getUsuarioByCorreo(correo){
-    this.api.getUsuarios().subscribe((data) => {
+    const load1$ = this.api.getUsuarios().subscribe((data) => {
       for(let i = 0; i < data.length; i++){
         if(correo == data[i].correo) {
+          this.listObservables = [load1$];
           return this.usuarioDataHtml = data[i]
         } else {
           continue
@@ -51,7 +60,6 @@ export class HomePage {
       }
     });
   }
-
   //----------- Scanner QR ---------//
   scan() {
     this.barcodeScanner.scan().then(barcodeData => {
@@ -61,6 +69,12 @@ export class HomePage {
          console.log('Error', err);
      });
     }
+
+
+  //------------------------
+  navProfile() {
+    this.router.navigate(['home']);
+  }
 
   // ---------- No se que hacen -----------  
   _scan(){
