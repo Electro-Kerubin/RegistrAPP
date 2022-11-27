@@ -22,14 +22,13 @@ const getConfig = () => {
     return {
       backButtonText: 'Volver',
       backButtonIcon: "ios-back-arrow",
-      pageTransition: 'ios-transition',
+      pageTransition: 'ios-transition'
     }
   }
 
   return {
     backButtonText: 'Volver',
-      backButtonIcon: "close",
-      pageTransition: 'ios-transition',
+      backButtonIcon: "close"
   }
 }
 
