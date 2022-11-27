@@ -8,26 +8,53 @@
   ],
   "usuarios": [
     {
-      "id": 1,
-      "run": "20304923",
+      "id": "20309502",
       "dv": "4",
       "primerNombre": "Aquiles",
       "segundoNombre": "Segundo",
       "paternoApellido": "Baeza",
       "maternoApellido": "Perez",
       "correo": "aqui.baeza@duocuc.cl",
-      "contraseña": "pass123"
+      "contraseña": "pass123",
+      "asignaturas": [
+        {
+          "id": "lenguaje",
+          "profesor": "Pepe",
+          "asistenciaTotal": 21,
+          "asistenciaAlumno": 5
+        },
+        {
+          "id": "matematicas",
+          "Profesor": "Nadia",
+          "asistenciaTotal": 21,
+          "asistenciaAlumno": 5
+        }
+      ]
     },
     {
-      "id": 2,
-      "run": "21549283",
+      "id": "19234048",
       "dv": "2",
       "primerNombre": "Susana",
       "segundoNombre": "Andrea",
       "paternoApellido": "Cortez",
       "maternoApellido": "Rojas",
       "correo": "susa.cortez@duocuc.cl",
-      "contraseña": "pass123"
+      "contraseña": "pass123",
+      "asignaturas": [
+        {
+          "id": "lenguaje",
+          "profesor": "Pepe",
+          "asistenciaTotal": 21,
+          "asistenciaAlumno": 10
+        },
+        {
+          "id": "matematicas",
+          "Profesor": "Nadia",
+          "asistenciaTotal": 21,
+          "asistenciaAlumno": 16
+        }
+      ]
     }
   ]
 }
+

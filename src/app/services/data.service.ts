@@ -13,4 +13,8 @@ export class DataService {
     return this.http.get<menuItems[]>('/assets/data/menu.json');
   }
 
+  getAsistencias() {
+    
+  }
+
 }

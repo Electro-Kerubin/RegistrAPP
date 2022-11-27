@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&family=Josefin+Sans&display=swap"
+  rel="stylesheet">
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="back-rectangle"></div>
+    <ion-title class="ion-text-center custom-font">RegistrAPP</ion-title>
+    <ion-buttons color="light" slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list *ngFor="let p of asistencia">
+    <ion-item>
+      <p class="paraf">
+        Asignatura: {{p.nombre}}
+      </p>
+      <p class="paraf">
+        Porcentaje Asistencia: {{p.porcentajeAsistencia}}%
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

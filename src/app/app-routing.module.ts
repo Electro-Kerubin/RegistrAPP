@@ -45,6 +45,11 @@ const routes: Routes = [
     redirectTo: 'generar',
     pathMatch: 'full'
   },
+  {
+    path: 'asistencia',
+    redirectTo: 'asistencia',
+    pathMatch: 'full'
+  },
   //esta ruta de 404 siempre debe ser la ultima
   {
     path: '**',
@@ -89,6 +94,11 @@ const routes: Routes = [
     path: 'agregar-usuario',
     loadChildren: () => import('./pages/agregar-usuario/agregar-usuario.module').then( m => m.AgregarUsuarioPageModule)
   },
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+  },
+
   
 ];
 
