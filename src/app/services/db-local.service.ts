@@ -19,6 +19,11 @@ export class DbLocalService {
     this.init();
   }
 
+  async guardarDataUsuario(data: Usuario) {
+    this.usuario.unshift(data)
+    this._storage.set('usuario', this.usuario)
+  }
+
   // ---- inicializa el localstorage*
   async init() {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
@@ -58,16 +63,16 @@ export class DbLocalService {
   }
 
   // --------------- Guarda usuarios en el localstorage con la pagina 'agregar-usuario' ------------
-  saveUsuario(run: string, nombre: string, correo: string, contrasena: string) {
-    const existe = this.usuario.find(c => c.run == run);
-    if(!existe) {
-      this.usuario.unshift({run: run, primerNombre: nombre, correo: correo, contraseña: contrasena})
-      this._storage.set('usuario', this.usuario);
-      this.presentToast("usuario agregado con exito!!")
-    } else {
-      this.presentToast("error: usuario ya existe!!!")
-    }
-  }
+  // saveUsuario(run: string, nombre: string, correo: string, contrasena: string) {
+  //   const existe = this.usuario.find(c => c.run == run);
+  //   if(!existe) {
+  //     this.usuario.unshift({run: run, primerNombre: nombre, correo: correo, contraseña: contrasena})
+  //     this._storage.set('usuario', this.usuario);
+  //     this.presentToast("usuario agregado con exito!!")
+  //   } else {
+  //     this.presentToast("error: usuario ya existe!!!")
+  //   }
+  // }
 
   // ----------- PresentToast -------------
   async presentToast(mensaje:string) {

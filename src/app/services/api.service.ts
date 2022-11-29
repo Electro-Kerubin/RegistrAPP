@@ -36,5 +36,26 @@ export class ApiService {
       retry(3)
     );
    }
+
+   getUsuarioById(data: any): Observable<any> {
+    return this.http.get(this.apiURL+'/usuarios/'+data).pipe(
+      retry(3)
+    );
+   }
    
+   validadorlogin(correo: string, pass: string){
+    const usuario = this.getUsuarios().subscribe((data) => {
+      for(let i = 0; i < data.length; i++) {
+        if(correo == data[i].correo && pass == data[i].contraseña) {
+          usuario.unsubscribe()
+          return true;
+        } else {
+          continue
+        }
+      }
+      usuario.unsubscribe()
+      return false
+    });
+   }
+
 }
