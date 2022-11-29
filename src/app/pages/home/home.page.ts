@@ -61,14 +61,6 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
   //----------- Scanner QR ---------//
-  scan() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      this.code = barcodeData.text;
-      console.log('Barcode data', this.code);
-     }).catch(err => {
-         console.log('Error', err);
-     });
-    }
 
 
   //------------------------
@@ -77,7 +69,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   // ---------- No se que hacen -----------  
-  _scan(){
+  scan(){
     this.router.navigate(['/escanear']);
   }
   generate(){
