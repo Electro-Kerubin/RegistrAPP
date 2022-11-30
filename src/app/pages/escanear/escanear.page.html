@@ -15,9 +15,14 @@
 
 <ion-content>
   <ion-title class="ion-text-center custom-font">Escanear Código <ion-icon name="qr-code-outline"></ion-icon></ion-title> 
-  <ion-item *ngIf="scannedResult">
-    <ion-label>
-      {{scannedResult}}
-    </ion-label>
-  </ion-item>
+    <ion-content>
+      <ion-list *ngIf="scannedResult">
+        <ion-item>
+          <p class="paraf">
+            {{scannedResult}}
+          </p>
+        </ion-item>
+      </ion-list>
+      <ion-button class="boton" fill="clear" (click)="presentAlert()">Guardar</ion-button>
+    </ion-content>
 </ion-content>
