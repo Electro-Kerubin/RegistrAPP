@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { DbLocalService } from 'src/app/services/db-local.service';
-import { ApiService } from 'src/app/services/api.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Subscription } from 'rxjs';
-import { Storage } from '@ionic/storage-angular';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 
 @Component({
@@ -38,17 +36,15 @@ export class LoginPage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private api: ApiService,
-    private db_local: DbLocalService,
-    private storage: Storage,
+    private firebase: FirebaseService,
     ) {
       
-      this.api.getUsuarioById(20309502).subscribe((data) => {
-        console.log(data.asignaturas) 
-        for(let i = 0; i < data.asignaturas.length; i++) {
-          console.log(data.asignaturas[i])
-        }
-      });
+      // this.api.getUsuarioById(20309502).subscribe((data) => {
+      //   console.log(data.asignaturas) 
+      //   for(let i = 0; i < data.asignaturas.length; i++) {
+      //     console.log(data.asignaturas[i])
+      //   }
+      // });
 
       //this.api.getUsuarios().subscribe((data) => this.db_local.guardarDataUsuario(data))
       // this.api.getUsuarioById(20309502).subscribe((data) => console.log(data.correo))
@@ -80,30 +76,53 @@ export class LoginPage implements OnInit, OnDestroy {
 
 
   //------- call api --------
-  validarUsuario(correo:string, password:string) {
+  async validarUsuario(correo:string, password:string) {
     
-    const load1$ = this.api.getUsuarios().subscribe((data)=>{
-      for(let i = 0; i < data.length; i++) {
-        if(correo == data[i].correo && password == data[i].contraseña) {
-          localStorage.setItem('guard', 'true');
-          localStorage.setItem('correo', correo);
-          localStorage.setItem('run', data[i].id)
-          // this.api.getUsuarioById(data[i].id).subscribe((data) => this.db_local.guardarDataUsuario(data))
-          this.userDataLogin = correo;
-          let navigationExtras: NavigationExtras = {
-            state: {
-              userDataLogin: { userDataLogin: this.userDataLogin }
-            }
-          }
-          load1$.unsubscribe()
-          return this.router.navigate(['/home'], navigationExtras);
-        } else {
-          continue
-        }
-      }
-      load1$.unsubscribe()
-      this.toastLogin("Los datos introducidos son incorrectos.")
-    });
+    const res = await this.firebase.validateEmailAndPass(correo, password).catch(err => {
+      console.log('error')
+      this.toastLogin('Datos introducidos son incorrectos.')
+    })
+
+    if(res) {
+      console.log('si')
+      localStorage.setItem('guard', 'true');
+      localStorage.setItem('correo', correo)
+      this.router.navigate(['/home'])
+    }
+
+    // signInWithEmailAndPassword(this.auth, correo, password)
+    // .then((response: any) => {
+    //   console.log(response.user)
+    //   localStorage.setItem('correo', correo)
+    //   // this.router.navigate(['/home'])
+    //   this.router.navigate(['home']);
+    // })
+    // .catch((err) => {
+    //   console.log("error")
+    // })
+
+    // const load1$ = this.api.getUsuarios().subscribe((data)=>{
+    //   for(let i = 0; i < data.length; i++) {
+    //     if(correo == data[i].correo && password == data[i].contraseña) {
+    //       localStorage.setItem('guard', 'true');
+    //       localStorage.setItem('correo', correo);
+    //       localStorage.setItem('run', data[i].id)
+    //       // this.api.getUsuarioById(data[i].id).subscribe((data) => this.db_local.guardarDataUsuario(data))
+    //       this.userDataLogin = correo;
+    //       let navigationExtras: NavigationExtras = {
+    //         state: {
+    //           userDataLogin: { userDataLogin: this.userDataLogin }
+    //         }
+    //       }
+    //       load1$.unsubscribe()
+    //       return this.router.navigate(['/home'], navigationExtras);
+    //     } else {
+    //       continue
+    //     }
+    //   }
+    //   load1$.unsubscribe()
+    //   this.toastLogin("Los datos introducidos son incorrectos.")
+    // });
   }
 
   //-------- toast general ------------

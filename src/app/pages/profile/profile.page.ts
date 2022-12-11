@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ApiService } from 'src/app/services/api.service';
-import { StorageTestService } from 'src/app/services/storage-test.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +21,15 @@ export class ProfilePage implements OnInit, OnDestroy {
   //Lista de observables para evitar la fuga de memoria generada por las mutliples subscripciones
   listObservables: Array<Subscription>;
 
-  constructor(private api: ApiService,) {
-                this.getUsuarioByCorreo(this.userLoginData)
-                console.log("correo: " + this.userLoginData)
-              }
+  constructor(
+    private api: ApiService,
+    private firebase: FirebaseService,
+    ) {
+        // this.getUsuarioByCorreo(this.userLoginData)
+        console.log("correo: " + this.userLoginData)
+        this.getData()
+      }
+
   ngOnDestroy(): void {
     this.listObservables.forEach(sub => sub.unsubscribe())
     console.log("profileDestroy")
@@ -35,19 +40,28 @@ export class ProfilePage implements OnInit, OnDestroy {
     
  }
 
+
+ getData() {
+  const load1$ = this.firebase.getDataByEmail(localStorage.getItem('correo')).subscribe((res) => {
+     this.usuarioDataHtml = res[0]
+     this.listObservables = [load1$]
+     console.log(res[0])
+  })
+}
+
   // Get Api Usuario
-   getUsuarioByCorreo(correo){
-     const load1$ = this.api.getUsuarios().subscribe((data) => {
-       for(let i = 0; i < data.length; i++){
-         if(correo == data[i].correo) {
-           this.listObservables = [load1$];
-           this.usuarioDataHtml = data[i]      
-       }     
-         else {
-           continue
-         }
-       }
-     });
-   }
+  //  getUsuarioByCorreo(correo){
+  //    const load1$ = this.api.getUsuarios().subscribe((data) => {
+  //      for(let i = 0; i < data.length; i++){
+  //        if(correo == data[i].correo) {
+  //          this.listObservables = [load1$];
+  //          this.usuarioDataHtml = data[i]      
+  //      }     
+  //        else {
+  //          continue
+  //        }
+  //      }
+  //    });
+  //  }
 
 }
