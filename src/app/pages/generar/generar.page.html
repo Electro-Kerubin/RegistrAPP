@@ -19,8 +19,7 @@
       <ion-list>
         <ion-item>
           <ion-select [(ngModel)]="qr.asignatura" interface="popover" placeholder="Seleccionar Asignatura" name="qr-asignatura">
-            <ion-select-option value="Lenguaje">Lenguaje</ion-select-option>
-            <ion-select-option value="Matemáticas">Matemáticas</ion-select-option>
+            <ion-select-option *ngFor="let asig of asignaturas">{{ asig.nombre }}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
