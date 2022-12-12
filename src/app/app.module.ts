@@ -12,9 +12,7 @@ import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { HttpClientModule } from '@angular/common/http';
-import { SQLite } from '@ionic-native/sqlite/ngx';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-import { LoginPage } from './pages/login/login.page';
 import { QRCodeModule } from 'angularx-qrcode';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -54,8 +52,8 @@ const getConfig = () => {
   providers: [
     Camera,
     BarcodeScanner,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite,LoginPage,
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
   ],
   bootstrap: [
     AppComponent

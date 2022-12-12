@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/usuario';
-import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -22,7 +21,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   listObservables: Array<Subscription>;
 
   constructor(
-    private api: ApiService,
     private firebase: FirebaseService,
     ) {
         // this.getUsuarioByCorreo(this.userLoginData)
@@ -48,20 +46,5 @@ export class ProfilePage implements OnInit, OnDestroy {
      console.log(res[0])
   })
 }
-
-  // Get Api Usuario
-  //  getUsuarioByCorreo(correo){
-  //    const load1$ = this.api.getUsuarios().subscribe((data) => {
-  //      for(let i = 0; i < data.length; i++){
-  //        if(correo == data[i].correo) {
-  //          this.listObservables = [load1$];
-  //          this.usuarioDataHtml = data[i]      
-  //      }     
-  //        else {
-  //          continue
-  //        }
-  //      }
-  //    });
-  //  }
 
 }
