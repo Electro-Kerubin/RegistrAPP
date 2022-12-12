@@ -7,6 +7,10 @@ import { Subscription } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageTestService } from 'src/app/services/storage-test.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 
 
 @Component({
@@ -26,23 +30,33 @@ export class EscanearPage implements OnInit {
   //Lista de observables para evitar la fuga de memoria generada por las mutliples subscripciones
   listObservables: Array<Subscription>;
   
-  constructor(private barcodeScanner: BarcodeScanner, private alertController: AlertController, private api: ApiService) { 
-	this.getUsuarioByCorreo(this.userLoginData)
-    console.log("correo: " + this.userLoginData)
+  constructor(private barcodeScanner: BarcodeScanner, private alertController: AlertController, private api: ApiService,
+    private firebase: FirebaseService, private http:HttpClient) { 
+		console.log("correo: " + this.userLoginData)
+        this.getData()
+	
   }
 
-  async presentAlert() {
+  async guardar(scannedResult) {
+	const email = this.usuarioDataHtml.correo;
+	const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+	this.http.post('https://formspree.io/f/mdojqjey',
+        { name: 'Clase registrada', replyto: this.usuarioDataHtml.correo, message: this.scannedResult },
+        { 'headers': headers }).subscribe(
+          response => {
+            console.log(response);
+          }
+        );
     const alert = await this.alertController.create({
       header: 'Guardado',
-	  subHeader: this.scannedResult ,
-      message:  'Correo enviado a: ' + this.usuarioDataHtml.correo ,
-
+	  subHeader: 'Correo enviado a: ' + this.usuarioDataHtml.correo ,
       buttons: ['OK'],
     });
 
     await alert.present();
   }
-
+  
+  
   ngOnInit(): void {
 		this.barcodeScanner
 			.scan()
@@ -55,20 +69,14 @@ export class EscanearPage implements OnInit {
 				console.log('Error', err)
 			})
 	}
-	getUsuarioByCorreo(correo){
-		const load1$ = this.api.getUsuarios().subscribe((data) => {
-		  for(let i = 0; i < data.length; i++){
-			if(correo == data[i].correo) {
-			  this.listObservables = [load1$];
-			  this.usuarioDataHtml = data[i]      
-		  }     
-			else {
-			  continue
-			}
-		  }
-		});
-	  }
-
+	getData() {
+		const load1$ = this.firebase.getDataByEmail(localStorage.getItem('correo')).subscribe((res) => {
+		   this.usuarioDataHtml = res[0]
+		   this.listObservables = [load1$]
+		   console.log(res[0])
+		})
+	
+	}
 	
 
 }
