@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Asignaturas } from 'src/app/interfaces/asignaturas';
-import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -17,7 +15,6 @@ export class AsistenciaPage implements OnInit, OnDestroy {
   listObservables: Array<Subscription>;
 
   constructor(
-    private api: ApiService,
     private firebase: FirebaseService,
   ) {
     //this.porcentajeAsistencia(Number(localStorage.getItem('run')))
@@ -47,22 +44,5 @@ export class AsistenciaPage implements OnInit, OnDestroy {
        }
     })
   }
-
-  // arreglar porque no especifica la asignatura
-  // porcentajeAsistencia(run: number) {
-  //   const apiObs = this.api.getUsuarioById(run).subscribe((data) => {
-  //     for(let i = 0; i < data.asignaturas.length; i++) {
-  //       let asignatura = {
-  //         nombre: data.asignaturas[i].id,
-  //         nombreProfesor: data.asignaturas[i].profesor,
-  //         asistenciaTotal: data.asignaturas[i].asistenciaTotal,
-  //         asistenciaAlumno: data.asignaturas[i].asistenciaAlumno,
-  //         porcentajeAsistencia: (Math.round(data.asignaturas[i].asistenciaAlumno / data.asignaturas[i].asistenciaTotal *100))
-  //       }
-  //       this.asistencia.push(asignatura)
-  //     }
-  //     return apiObs.unsubscribe()
-  //   });
-  // }
 
 }

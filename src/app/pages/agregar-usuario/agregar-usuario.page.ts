@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DbLocalService } from 'src/app/services/db-local.service';
 
 @Component({
   selector: 'app-agregar-usuario',
@@ -14,7 +13,7 @@ export class AgregarUsuarioPage implements OnInit {
   contrasena: string;
 
   constructor(
-    public dblocalservice: DbLocalService,
+
   ) { }
 
   ngOnInit() {
