@@ -53,10 +53,28 @@ export class EscanearPage implements OnInit {
   ngOnInit(): void {
 		this.barcodeScanner
 			.scan()
-			.then((barcodeData) => {
+			.then(async (barcodeData) => {
 				console.log('Barcode data', barcodeData)
 				this.scannedResult = barcodeData.text
 				console.log(barcodeData.text)
+				const email = this.usuarioDataHtml.correo;
+				const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+				this.http.post('https://formspree.io/f/mdojqjey',
+					{ name: 'Clase registrada', replyto: this.usuarioDataHtml.correo, message: this.scannedResult },
+					{ 'headers': headers }).subscribe(
+					  response => {
+						console.log(response);
+					  }
+					);
+					const alert = await this.alertController.create({
+						header: 'Guardado',
+						subHeader: this.scannedResult ,
+						message:  'Correo enviado a: ' + this.usuarioDataHtml.correo ,
+				  
+						buttons: ['OK'],
+					  });
+				  
+					  await alert.present();
 			})
 			.catch((err) => {
 				console.log('Error', err)

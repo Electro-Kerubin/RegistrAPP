@@ -21,7 +21,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 const getConfig = () => {
-  if (isPlatform('ios')) {
+  if (isPlatform('iphone')) {
     return {
       backButtonText: 'Volver',
       backButtonIcon: "ios-back-arrow",
@@ -30,7 +30,7 @@ const getConfig = () => {
   }
 
   return {
-    backButtonText: 'Volver',
+    backButtonText: 'Atrás',
       backButtonIcon: "close"
   }
 }

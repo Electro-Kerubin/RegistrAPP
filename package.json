@@ -46,6 +46,7 @@
     "cordova-sqlite-storage": "^6.0.0",
     "ionicons": "^6.0.3",
     "mailgun.js": "^8.0.6",
+    "notiflix": "^3.2.5",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.6.0",
     "sails-hook-email": "^0.12.1",

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import * as Notiflix from 'notiflix';
+
 
 
 @Component({
@@ -50,10 +52,12 @@ export class LoginPage implements OnInit, OnDestroy {
     })
 
     if(res) {
+      Notiflix.Loading.standard('Cargando...');
       console.log('si')
       localStorage.setItem('guard', 'true');
       localStorage.setItem('correo', correo)
       this.router.navigate(['/home'])
+      Notiflix.Loading.remove();
     }
   }
 

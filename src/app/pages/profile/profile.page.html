@@ -16,6 +16,9 @@
 
 <ion-content>
   <mat-card class="card custom-font">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="home"></ion-back-button>
+    </ion-buttons>
     <mat-card-header *ngIf="usuarioDataHtml">
       <div mat-card-avatar class="header-image"></div>
       <mat-card-title>{{ usuarioDataHtml.primerNombre }} {{ usuarioDataHtml.paternoApellido}} {{ usuarioDataHtml.maternoApellido}}</mat-card-title>
@@ -28,7 +31,8 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button class="btn custom-font">Editar</button>
-      <button mat-raised-button class="btn custom-font" routerLink="/home">Cancelar</button>
+      
+  
     </mat-card-actions>
   </mat-card>
 </ion-content>

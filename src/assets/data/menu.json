@@ -12,12 +12,12 @@
     {
         "title": "Escanear",
         "url": "/escanear",
-        "icon": "qr-code-outline"
+        "icon": "camera-outline"
     },
     {
         "title": "Setting",
         "url": "/setting",
-        "icon": "ion-ios-gear"
+        "icon": "settings-outline"
     },
     {
         "title": "Logout",
